@@ -1,12 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
-// import "./Components/Navbar/Custom.scss";
 import App from "./App";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { HashRouter } from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <HashRouter>
+      <App />
+    </HashRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );
