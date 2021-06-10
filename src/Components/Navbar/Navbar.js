@@ -3,6 +3,7 @@ import "./Navbar.css";
 import tiessLogo from "../../images/TiessLogo.png";
 import "bootstrap/dist/css/bootstrap.min.css";
 import * as ReactBootStrap from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -22,9 +23,9 @@ const Navbar = () => {
             <ReactBootStrap.Nav.Link id="link-home" href="home">
               Home
             </ReactBootStrap.Nav.Link>
-            <ReactBootStrap.Nav.Link id="link-products" href="products">
-              Products
-            </ReactBootStrap.Nav.Link>
+            <ReactBootStrap.Nav id="link-products">
+              <Link to="/products">Products</Link>
+            </ReactBootStrap.Nav>
             <ReactBootStrap.Nav.Link id="link-design" href="design">
               Design
             </ReactBootStrap.Nav.Link>
