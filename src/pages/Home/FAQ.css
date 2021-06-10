@@ -1,0 +1,52 @@
+.faq-container {
+  width: 60%;
+  margin: auto;
+}
+
+.title {
+  text-align: center;
+  width: 100%;
+  margin-top: 50px;
+  color: #f93c64;
+}
+
+.list-container {
+  margin-top: 40px;
+  list-style-type: none;
+}
+
+.list-container h2 {
+  padding: 10px;
+}
+
+.list-container p {
+  padding: 5px 10px;
+}
+
+li > h2 {
+  width: 100%;
+  text-align: center;
+}
+
+li > p {
+  text-align: center;
+}
+
+.button-wrapper {
+  position: absolute;
+  padding: 5px 15px 5px 15px;
+  left: 20px;
+}
+
+.btn-back {
+  position: absolute;
+  left: 50px;
+  bottom: 50px;
+  border: none;
+  background: none;
+}
+
+.btn-back i {
+  font-size: 50px;
+  color: lightcoral;
+}

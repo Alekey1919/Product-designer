@@ -1,0 +1,41 @@
+.container {
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  width: 300px;
+  height: 350px;
+  margin: auto;
+}
+
+.container img {
+  /* width: 85%; */
+  height: 63%;
+  display: block;
+  margin: auto;
+  padding-top: 20px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.container img:hover {
+  transform: scale(1.1);
+}
+
+.title {
+  margin: 20px auto auto auto;
+  padding-top: 20px;
+  width: 80%;
+  color: #f93c64;
+  text-align: center;
+  cursor: pointer;
+}
+
+.title:hover {
+  color: #f93c64;
+}
+
+.price {
+  margin: auto;
+  padding-top: 30px;
+  width: 25%;
+  text-align: center;
+}

@@ -1,0 +1,43 @@
+.background {
+  width: 100%;
+  height: 900px;
+}
+
+.footer {
+  display: flex;
+  width: 100%;
+  height: 50px;
+  background-color: #eee;
+  margin-top: 40px;
+}
+
+.footer p {
+  color: #f93c64;
+  font-size: 20px;
+  margin: auto;
+}
+
+.card-img {
+  height: 190px;
+  transition: transform 0.4s;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.link {
+  color: #fff;
+}
+
+.link:hover {
+  color: #ccc;
+}
+
+.img-container {
+  overflow: hidden;
+}
+
+.card-img:hover {
+  transform: scale(1.05);
+}

@@ -1,0 +1,14 @@
+.col-md-6 img {
+  width: 100%;
+  padding: 20px;
+}
+
+.col-md-6 {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.last-row {
+  justify-content: center;
+}

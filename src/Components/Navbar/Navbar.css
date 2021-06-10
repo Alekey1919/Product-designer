@@ -1,0 +1,28 @@
+#tiess-logo {
+  width: 120px;
+  margin-left: 15px;
+}
+
+#navbar-container {
+  background-color: #201c2c;
+  height: 8vh;
+}
+
+#inner-container {
+  display: flex;
+}
+
+#link-home,
+#link-products,
+#link-design,
+#link-my-designs,
+#link-about {
+  color: #fff;
+}
+
+#white {
+  color: white;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
