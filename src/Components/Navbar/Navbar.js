@@ -3,6 +3,7 @@ import "./Navbar.css";
 import tiessLogo from "../../images/TiessLogo.png";
 import "bootstrap/dist/css/bootstrap.min.css";
 import * as ReactBootStrap from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -19,21 +20,31 @@ const Navbar = () => {
         </ReactBootStrap.Navbar.Toggle>
         <ReactBootStrap.Navbar.Collapse id="basic-navbar-nav">
           <ReactBootStrap.Nav className="me-auto">
-            <ReactBootStrap.Nav.Link id="link-home" href="home">
-              Home
-            </ReactBootStrap.Nav.Link>
-            <ReactBootStrap.Nav.Link id="link-products" href="products">
-              Products
-            </ReactBootStrap.Nav.Link>
-            <ReactBootStrap.Nav.Link id="link-design" href="design">
-              Design
-            </ReactBootStrap.Nav.Link>
-            <ReactBootStrap.Nav.Link id="link-my-designs" href="my-designs">
-              My Designs
-            </ReactBootStrap.Nav.Link>
-            <ReactBootStrap.Nav.Link id="link-about" href="about">
-              About
-            </ReactBootStrap.Nav.Link>
+            <ReactBootStrap.Nav id="link-home">
+              <Link exact to="/" className="navlink">
+                Home
+              </Link>
+            </ReactBootStrap.Nav>
+            <ReactBootStrap.Nav id="link-products">
+              <Link exact to="/products" className="navlink">
+                Products
+              </Link>
+            </ReactBootStrap.Nav>
+            <ReactBootStrap.Nav id="link-design">
+              <Link exact to="/design" className="navlink">
+                Design
+              </Link>
+            </ReactBootStrap.Nav>
+            <ReactBootStrap.Nav id="link-my-designs">
+              <Link exact to="/my-designs" className="navlink">
+                My Designs
+              </Link>
+            </ReactBootStrap.Nav>
+            <ReactBootStrap.Nav id="link-about">
+              <Link exact to="/about" className="navlink">
+                About
+              </Link>
+            </ReactBootStrap.Nav>
           </ReactBootStrap.Nav>
         </ReactBootStrap.Navbar.Collapse>
       </ReactBootStrap.Container>

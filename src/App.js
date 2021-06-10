@@ -26,7 +26,7 @@ const App = () => {
       <main>
         <Switch>
           <Route path="/" exact>
-            <Design />
+            <Home />
           </Route>
           <Route path="/sizes" exact>
             <Sizes />
@@ -38,7 +38,7 @@ const App = () => {
             <Products />
           </Route>
           <Route path="/design" exact>
-            <Home />
+            <Design />
           </Route>
           <Route path="/design-t-shirt" exact>
             <DesignTshirt />

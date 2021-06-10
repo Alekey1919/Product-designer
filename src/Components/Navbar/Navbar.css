@@ -30,3 +30,12 @@
   right: 20px;
   top: 20px;
 }
+
+.navlink {
+  color: #fff;
+  padding-left: 20px;
+}
+
+.navlink:hover {
+  color: #ccc;
+}
