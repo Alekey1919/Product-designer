@@ -24,7 +24,9 @@ const Navbar = () => {
               Home
             </ReactBootStrap.Nav.Link>
             <ReactBootStrap.Nav id="link-products">
-              <Link to="/products">Products</Link>
+              <Link to="/products" id="test">
+                Products
+              </Link>
             </ReactBootStrap.Nav>
             <ReactBootStrap.Nav.Link id="link-design" href="design">
               Design
