@@ -4,7 +4,7 @@ import "./Sizes.css";
 function Sizes() {
   return (
     <div className="container-component">
-      <h1>Sizes</h1>
+      <h1 id="sizes">Sizes</h1>
       <div className="container">
         <div className="row">
           <div className="col-md-6">

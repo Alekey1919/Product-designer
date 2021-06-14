@@ -151,7 +151,7 @@ function Home() {
                   Try our design tool to create your personalized products.
                 </Card.Text>
                 <Button variant="danger">
-                  <Link to="#" className="link">
+                  <Link to="/Design" className="link">
                     Create my designs
                   </Link>
                 </Button>

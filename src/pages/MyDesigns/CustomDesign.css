@@ -1,0 +1,75 @@
+.custom-product-container {
+  margin: auto;
+  border: 2px solid #ccc;
+  width: 350px;
+  height: 480px;
+  border-radius: 5px;
+}
+
+.custom-product-image {
+  margin-left: 20px;
+}
+
+#name,
+#name-single {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  font-size: 25px;
+  color: #f93c64;
+  margin: 10px auto;
+  width: 95%;
+  overflow-x: hidden;
+}
+
+#name-single {
+  margin-top: 47px;
+}
+
+#test {
+  margin-left: 9px;
+  height: 370px;
+}
+
+.carousel .carousel-indicators li {
+  background-color: #ccc;
+}
+.carousel .carousel-indicators li.active {
+  background-color: #f93c64;
+}
+
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+  filter: invert(1);
+}
+
+.none {
+  display: none;
+}
+
+#delete-btn {
+  border: none;
+  background: none;
+  position: relative;
+  left: 90%;
+  top: -25px;
+}
+
+#delete-btn i {
+  font-size: 20px;
+  color: #f93c64;
+}
+
+#delete-btn-single {
+  border: none;
+  background: none;
+  position: relative;
+  left: 90%;
+  top: -27px;
+}
+
+#delete-btn-single i {
+  font-size: 20px;
+  color: #f93c64;
+}

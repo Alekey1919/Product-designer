@@ -5,97 +5,39 @@ import { useState, useEffect } from "react";
 import "./DesignProducts.css";
 import { useHistory } from "react-router-dom";
 
-import WhiteTshirt from "../../images/White-t-shirt.png";
-import WhiteTshirtBack from "../../images/White-t-shirt-back.png";
-import BlackTshirt from "../../images/Black-t-shirt.png";
-import BlackTshirtBack from "../../images/Black-t-shirt-back.png";
-import YellowTshirt from "../../images/Yellow-t-shirt.png";
-import YellowTshirtBack from "../../images/Yellow-t-shirt-back.png";
-import BlueTshirt from "../../images/Blue-t-shirt.png";
-import BlueTshirtBack from "../../images/Blue-t-shirt-back.png";
-import RedTshirt from "../../images/Red-t-shirt.png";
-import RedTshirtBack from "../../images/Red-t-shirt-back.png";
+import WhiteCushion from "../../images/White-cushion.png";
+import BlackCushion from "../../images/Black-cushion.png";
 
-function DesignTShirt() {
+function DesignCushion() {
   const [canvas, setCanvas] = useState("");
-  const [canvas1, setCanvas1] = useState("");
   const canvasContainer = document.querySelector("#canvas-container");
-  const canvas1Container = document.querySelector("#canvas1-container");
   const history = useHistory();
 
+  useEffect(() => {
+    document.getElementById("dorito").style.display = "none";
+    document.getElementById("yellow-color").style.display = "none";
+    document.getElementById("blue-color").style.display = "none";
+    document.getElementById("red-color").style.display = "none";
+  });
   //Canvas initialization
 
   useEffect(() => {
     setCanvas(
       new fabric.Canvas("canvas", {
-        height: 700,
-        width: 600,
-        backgroundImage: WhiteTshirt,
+        height: 600,
+        width: 700,
+        backgroundImage: WhiteCushion,
       })
     );
   }, []);
-
-  useEffect(() => {
-    setCanvas1(
-      new fabric.Canvas("canvas1", {
-        height: 700,
-        width: 600,
-        backgroundImage: WhiteTshirtBack,
-      })
-    );
-  }, []);
-
-  // Front Back
-
-  const front = () => {
-    document.querySelector("#canvas-container").style.display = "block";
-    document.querySelector("#canvas1-container").style.display = "none";
-  };
-
-  const back = () => {
-    document.querySelector("#canvas-container").style.display = "none";
-    document.querySelector("#canvas1-container").style.display = "block";
-  };
 
   // Color Picker (product)
 
   const colorPicker = (color) => {
     if (color === "black") {
-      canvas.setBackgroundImage(BlackTshirt, canvas.renderAll.bind(canvas));
-      canvas1.setBackgroundImage(
-        BlackTshirtBack,
-        canvas1.renderAll.bind(canvas1)
-      );
-    } else if (color === "red") {
-      canvas.setBackgroundImage(RedTshirt, canvas.renderAll.bind(canvas));
-      canvas1.setBackgroundImage(
-        RedTshirtBack,
-        canvas1.renderAll.bind(canvas1)
-      );
-    } else if (color === "yellow") {
-      canvas.setBackgroundImage(YellowTshirt, canvas.renderAll.bind(canvas));
-      canvas1.setBackgroundImage(
-        YellowTshirtBack,
-        canvas1.renderAll.bind(canvas1)
-      );
-    } else if (color === "yellow") {
-      canvas.setBackgroundImage(YellowTshirt, canvas.renderAll.bind(canvas));
-      canvas1.setBackgroundImage(
-        YellowTshirtBack,
-        canvas1.renderAll.bind(canvas1)
-      );
-    } else if (color === "blue") {
-      canvas.setBackgroundImage(BlueTshirt, canvas.renderAll.bind(canvas));
-      canvas1.setBackgroundImage(
-        BlueTshirtBack,
-        canvas1.renderAll.bind(canvas1)
-      );
+      canvas.setBackgroundImage(BlackCushion, canvas.renderAll.bind(canvas));
     } else {
-      canvas.setBackgroundImage(WhiteTshirt, canvas.renderAll.bind(canvas));
-      canvas1.setBackgroundImage(
-        WhiteTshirtBack,
-        canvas1.renderAll.bind(canvas1)
-      );
+      canvas.setBackgroundImage(WhiteCushion, canvas.renderAll.bind(canvas));
     }
   };
 
@@ -109,16 +51,6 @@ function DesignTShirt() {
           if (activeObjects.length > 0) {
             for (var i = 0; i < activeObjects.length; i++) {
               canvas.remove(activeObjects[i]);
-            }
-          }
-        }
-      }
-      if (canvas1Container.style.display != "none") {
-        if (e.key === "Delete" || e.key === "Backspace") {
-          var activeObjects = canvas1.getActiveObjects();
-          if (activeObjects.length > 0) {
-            for (var i = 0; i < activeObjects.length; i++) {
-              canvas1.remove(activeObjects[i]);
             }
           }
         }
@@ -198,13 +130,8 @@ function DesignTShirt() {
       text.set("linethrough", true);
     }
 
-    if (canvasContainer.style.display != "none") {
-      canvas.add(text);
-      canvas.centerObject(text);
-    } else {
-      canvas1.add(text);
-      canvas1.centerObject(text);
-    }
+    canvas.add(text);
+    canvas.centerObject(text);
 
     // Font
 
@@ -213,10 +140,6 @@ function DesignTShirt() {
       if (canvas.getActiveObject() != null) {
         canvas.getActiveObject().set("fontFamily", fontFamily.value);
         canvas.renderAll();
-      }
-      if (canvas1.getActiveObject() != null) {
-        canvas1.getActiveObject().set("fontFamily", fontFamily.value);
-        canvas1.renderAll();
       }
     });
 
@@ -227,10 +150,6 @@ function DesignTShirt() {
       if (canvas.getActiveObject() != null) {
         canvas.getActiveObject().set("fontSize", fontSize.value);
         canvas.renderAll();
-      }
-      if (canvas1.getActiveObject() != null) {
-        canvas1.getActiveObject().set("fontSize", fontSize.value);
-        canvas1.renderAll();
       }
     });
 
@@ -246,15 +165,6 @@ function DesignTShirt() {
           canvas.renderAll();
         }
       }
-      if (canvas1.getActiveObject() != null) {
-        if (boldCheckbox.checked) {
-          canvas1.getActiveObject().set("fontWeight", "bold");
-          canvas1.renderAll();
-        } else {
-          canvas1.getActiveObject().set("fontWeight", "normal");
-          canvas1.renderAll();
-        }
-      }
     });
 
     italicCheckbox.addEventListener("change", () => {
@@ -265,15 +175,6 @@ function DesignTShirt() {
         } else {
           canvas.getActiveObject().set("fontStyle", "normal");
           canvas.renderAll();
-        }
-      }
-      if (canvas1.getActiveObject() != null) {
-        if (italicCheckbox.checked) {
-          canvas1.getActiveObject().set("fontStyle", "italic");
-          canvas1.renderAll();
-        } else {
-          canvas1.getActiveObject().set("fontStyle", "normal");
-          canvas1.renderAll();
         }
       }
     });
@@ -288,15 +189,6 @@ function DesignTShirt() {
           canvas.renderAll();
         }
       }
-      if (canvas1.getActiveObject() != null) {
-        if (underlineCheckbox.checked) {
-          canvas1.getActiveObject().set("underline", true);
-          canvas1.renderAll();
-        } else {
-          canvas1.getActiveObject().set("underline", false);
-          canvas1.renderAll();
-        }
-      }
     });
 
     linethroughCheckbox.addEventListener("change", () => {
@@ -309,31 +201,14 @@ function DesignTShirt() {
           canvas.renderAll();
         }
       }
-      if (canvas1.getActiveObject() != null) {
-        if (linethroughCheckbox.checked) {
-          canvas1.getActiveObject().set("linethrough", true);
-          canvas1.renderAll();
-        } else {
-          canvas1.getActiveObject().set("linethrough", false);
-          canvas1.renderAll();
-        }
-      }
     });
 
     // Color picker onchange
 
     document.getElementById("color-picker").onchange = function () {
-      if (
-        canvas.getActiveObject() != null ||
-        canvas1.getActiveObject() != null
-      ) {
-        if (canvasContainer.style.display != "none") {
-          canvas.getActiveObject().set("fill", this.value);
-          canvas.renderAll();
-        } else {
-          canvas1.getActiveObject().set("fill", this.value);
-          canvas1.renderAll();
-        }
+      if (canvas.getActiveObject() != null) {
+        canvas.getActiveObject().set("fill", this.value);
+        canvas.renderAll();
       }
     };
   };
@@ -355,11 +230,8 @@ function DesignTShirt() {
             top: 10,
           })
           .scale(0.2);
-        if (canvasContainer.style.display != "none") {
-          canvas.add(image);
-        } else {
-          canvas1.add(image);
-        }
+
+        canvas.add(image);
       };
     };
     reader.readAsDataURL(e.target.files[0]);
@@ -370,41 +242,6 @@ function DesignTShirt() {
   }
 
   function urlImageHandler() {
-    //   let url = document.querySelector("#url-input").value;
-    //   var imageURL = document.createElement("img");
-    //   imageURL.src = url;
-    //   fabric.util.loadImage(
-    //     "url",
-    //     function (image) {
-    //       var object = new fabric.Image(imageURL);
-    //       object.set({
-    //         left: 20,
-    //         top: 20,
-    //       });
-    //       canvas.add(object);
-    //     },
-    //     null,
-    //     {
-    //       crossOrigin: "Anonymous",
-    //     }
-    //   );
-    // }
-    //   var imageURL = new fabric.Image.fromURL(url, (image) => {
-    //     image.set({
-    //       left: 10,
-    //       top: 10,
-    //     });
-    //     image.crossOrigin = "anonymous";
-    //     image.scaleToWidth(canvas.width / 3);
-    //     if (canvasContainer.style.display != "none") {
-    //       canvas.add(image);
-    //       canvas.renderAll();
-    //     } else {
-    //       canvas1.add(image);
-    //       canvas1.renderAll();
-    //     }
-    //   });
-    // }
     let url = document.querySelector("#url-input").value;
     var imageURL = new fabric.Image.fromURL(url, (image) => {
       image.set({
@@ -413,13 +250,9 @@ function DesignTShirt() {
       });
       image.crossOrigin = "anonymous";
       image.scaleToWidth(canvas.width / 3);
-      if (canvasContainer.style.display != "none") {
-        canvas.add(image);
-        canvas.renderAll();
-      } else {
-        canvas1.add(image);
-        canvas1.renderAll();
-      }
+
+      canvas.add(image);
+      canvas.renderAll();
     });
   }
 
@@ -433,13 +266,6 @@ function DesignTShirt() {
     link.download = "Front.png";
     link.href = imageDownload;
     link.click();
-    var imageDownload1 = canvas1
-      .toDataURL("image/png")
-      .replace("image/png", "image/octet-stream");
-    var link1 = document.createElement("a");
-    link1.download = "Back.png";
-    link1.href = imageDownload1;
-    link1.click();
   }
 
   // Form Submit
@@ -447,14 +273,12 @@ function DesignTShirt() {
   const submitHandler = (event) => {
     event.preventDefault();
     let name = document.querySelector("#name-input").value;
-    let product = "T-shirt";
+    let product = "Cushion";
     let url = canvas.toDataURL();
-    let url1 = canvas1.toDataURL();
     let productData = {
       name: name,
       product: product,
       src0: url,
-      src1: url1,
     };
     fetch("https://tiess-test-default-rtdb.firebaseio.com/my-designs.json", {
       method: "POST",
@@ -480,8 +304,6 @@ function DesignTShirt() {
         openSave={openSave}
         download={download}
         openColor={openColor}
-        front={front}
-        back={back}
         colorPicker={colorPicker}
         openOverlay={openOverlay}
         submitHandler={submitHandler}
@@ -490,4 +312,4 @@ function DesignTShirt() {
   );
 }
 
-export default DesignTShirt;
+export default DesignCushion;

@@ -12,3 +12,10 @@
 .last-row {
   justify-content: center;
 }
+
+#sizes {
+  margin-top: 50px;
+  width: 100%;
+  text-align: center;
+  color: #f93c64;
+}

@@ -5,18 +5,18 @@ import { useState, useEffect } from "react";
 import "./DesignProducts.css";
 import { useHistory } from "react-router-dom";
 
-import WhiteTshirt from "../../images/White-t-shirt.png";
-import WhiteTshirtBack from "../../images/White-t-shirt-back.png";
-import BlackTshirt from "../../images/Black-t-shirt.png";
-import BlackTshirtBack from "../../images/Black-t-shirt-back.png";
-import YellowTshirt from "../../images/Yellow-t-shirt.png";
-import YellowTshirtBack from "../../images/Yellow-t-shirt-back.png";
-import BlueTshirt from "../../images/Blue-t-shirt.png";
-import BlueTshirtBack from "../../images/Blue-t-shirt-back.png";
-import RedTshirt from "../../images/Red-t-shirt.png";
-import RedTshirtBack from "../../images/Red-t-shirt-back.png";
+import WhiteHoodie from "../../images/White-hoodie.png";
+import WhiteHoodieBack from "../../images/White-hoodie-back.png";
+import BlackHoodie from "../../images/Black-hoodie.png";
+import BlackHoodieBack from "../../images/Black-hoodie-back.png";
+import YellowHoodie from "../../images/Yellow-hoodie.png";
+import YellowHoodieBack from "../../images/Yellow-hoodie-back.png";
+import BlueHoodie from "../../images/Blue-hoodie.png";
+import BlueHoodieBack from "../../images/Blue-hoodie-back.png";
+import RedHoodie from "../../images/Red-hoodie.png";
+import RedHoodieBack from "../../images/Red-hoodie-back.png";
 
-function DesignTShirt() {
+function DesignHoodie() {
   const [canvas, setCanvas] = useState("");
   const [canvas1, setCanvas1] = useState("");
   const canvasContainer = document.querySelector("#canvas-container");
@@ -28,9 +28,9 @@ function DesignTShirt() {
   useEffect(() => {
     setCanvas(
       new fabric.Canvas("canvas", {
-        height: 700,
+        height: 800,
         width: 600,
-        backgroundImage: WhiteTshirt,
+        backgroundImage: WhiteHoodie,
       })
     );
   }, []);
@@ -38,9 +38,9 @@ function DesignTShirt() {
   useEffect(() => {
     setCanvas1(
       new fabric.Canvas("canvas1", {
-        height: 700,
+        height: 800,
         width: 600,
-        backgroundImage: WhiteTshirtBack,
+        backgroundImage: WhiteHoodieBack,
       })
     );
   }, []);
@@ -61,39 +61,39 @@ function DesignTShirt() {
 
   const colorPicker = (color) => {
     if (color === "black") {
-      canvas.setBackgroundImage(BlackTshirt, canvas.renderAll.bind(canvas));
+      canvas.setBackgroundImage(BlackHoodie, canvas.renderAll.bind(canvas));
       canvas1.setBackgroundImage(
-        BlackTshirtBack,
+        BlackHoodieBack,
         canvas1.renderAll.bind(canvas1)
       );
     } else if (color === "red") {
-      canvas.setBackgroundImage(RedTshirt, canvas.renderAll.bind(canvas));
+      canvas.setBackgroundImage(RedHoodie, canvas.renderAll.bind(canvas));
       canvas1.setBackgroundImage(
-        RedTshirtBack,
+        RedHoodieBack,
         canvas1.renderAll.bind(canvas1)
       );
     } else if (color === "yellow") {
-      canvas.setBackgroundImage(YellowTshirt, canvas.renderAll.bind(canvas));
+      canvas.setBackgroundImage(YellowHoodie, canvas.renderAll.bind(canvas));
       canvas1.setBackgroundImage(
-        YellowTshirtBack,
+        YellowHoodieBack,
         canvas1.renderAll.bind(canvas1)
       );
     } else if (color === "yellow") {
-      canvas.setBackgroundImage(YellowTshirt, canvas.renderAll.bind(canvas));
+      canvas.setBackgroundImage(YellowHoodie, canvas.renderAll.bind(canvas));
       canvas1.setBackgroundImage(
-        YellowTshirtBack,
+        YellowHoodieBack,
         canvas1.renderAll.bind(canvas1)
       );
     } else if (color === "blue") {
-      canvas.setBackgroundImage(BlueTshirt, canvas.renderAll.bind(canvas));
+      canvas.setBackgroundImage(BlueHoodie, canvas.renderAll.bind(canvas));
       canvas1.setBackgroundImage(
-        BlueTshirtBack,
+        BlueHoodieBack,
         canvas1.renderAll.bind(canvas1)
       );
     } else {
-      canvas.setBackgroundImage(WhiteTshirt, canvas.renderAll.bind(canvas));
+      canvas.setBackgroundImage(WhiteHoodie, canvas.renderAll.bind(canvas));
       canvas1.setBackgroundImage(
-        WhiteTshirtBack,
+        WhiteHoodieBack,
         canvas1.renderAll.bind(canvas1)
       );
     }
@@ -370,41 +370,6 @@ function DesignTShirt() {
   }
 
   function urlImageHandler() {
-    //   let url = document.querySelector("#url-input").value;
-    //   var imageURL = document.createElement("img");
-    //   imageURL.src = url;
-    //   fabric.util.loadImage(
-    //     "url",
-    //     function (image) {
-    //       var object = new fabric.Image(imageURL);
-    //       object.set({
-    //         left: 20,
-    //         top: 20,
-    //       });
-    //       canvas.add(object);
-    //     },
-    //     null,
-    //     {
-    //       crossOrigin: "Anonymous",
-    //     }
-    //   );
-    // }
-    //   var imageURL = new fabric.Image.fromURL(url, (image) => {
-    //     image.set({
-    //       left: 10,
-    //       top: 10,
-    //     });
-    //     image.crossOrigin = "anonymous";
-    //     image.scaleToWidth(canvas.width / 3);
-    //     if (canvasContainer.style.display != "none") {
-    //       canvas.add(image);
-    //       canvas.renderAll();
-    //     } else {
-    //       canvas1.add(image);
-    //       canvas1.renderAll();
-    //     }
-    //   });
-    // }
     let url = document.querySelector("#url-input").value;
     var imageURL = new fabric.Image.fromURL(url, (image) => {
       image.set({
@@ -447,7 +412,7 @@ function DesignTShirt() {
   const submitHandler = (event) => {
     event.preventDefault();
     let name = document.querySelector("#name-input").value;
-    let product = "T-shirt";
+    let product = "Hoodie";
     let url = canvas.toDataURL();
     let url1 = canvas1.toDataURL();
     let productData = {
@@ -490,4 +455,4 @@ function DesignTShirt() {
   );
 }
 
-export default DesignTShirt;
+export default DesignHoodie;

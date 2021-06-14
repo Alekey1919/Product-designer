@@ -105,7 +105,7 @@ function DesignBar(props) {
           Upload Image
         </button>
         <div className="expandable-container" id="upload-image-container">
-          <label for="url" className="label-url">
+          {/* <label for="url" className="label-url">
             URL
             <div>
               <input
@@ -117,7 +117,7 @@ function DesignBar(props) {
                 Upload
               </button>
             </div>
-          </label>
+          </label> */}
           <label>
             Upload Image
             <input
@@ -136,7 +136,7 @@ function DesignBar(props) {
           </label>
           <hr className="hr" />
         </div>
-        <div className="front-back-container">
+        <div className="front-back-container" id="dorito">
           <button className="front-btn" onClick={props.front}>
             Front
           </button>
@@ -184,6 +184,7 @@ function DesignBar(props) {
                 required
                 placeholder="Insert a name"
                 id="name-input"
+                maxLength="40"
               ></input>
             </label>
             <button class="button save-form-btn">Save</button>

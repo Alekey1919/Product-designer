@@ -1,0 +1,23 @@
+.my-designs-container {
+}
+
+.my-designs-container h1 {
+  text-align: center;
+  width: 100%;
+  color: #f93c64;
+  /* margin-left: 15px; */
+}
+
+#svg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+#container-to-left {
+  margin: auto;
+  padding: 0;
+}

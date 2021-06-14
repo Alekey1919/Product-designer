@@ -16,6 +16,8 @@ import Sizes from "./pages/Home/Sizes";
 import FAQ from "./pages/Home/FAQ";
 import ScrollToTop from "./Components/ScrollToTop";
 import DesignTshirt from "./pages/Design/DesignT-shirt";
+import DesignHoodie from "./pages/Design/DesignHoodie";
+import DesignCushion from "./pages/Design/DesignCushion";
 import DesignSecso from "./pages/Design/DesignSecso";
 
 const App = () => {
@@ -42,6 +44,12 @@ const App = () => {
           </Route>
           <Route path="/design-t-shirt" exact>
             <DesignTshirt />
+          </Route>
+          <Route path="/design-hoodie" exact>
+            <DesignHoodie />
+          </Route>
+          <Route path="/design-cushion" exact>
+            <DesignCushion />
           </Route>
           <Route path="/my-designs" exact>
             <MyDesigns />
