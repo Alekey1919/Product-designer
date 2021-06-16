@@ -3,13 +3,18 @@ import "./Home.css";
 import Product from "../../Components/Products/Product";
 import barbijo from "../../images/Barbijo.png";
 import Overlay from "../../Components/Products/Overlay";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Card, Button } from "react-bootstrap";
 import mousepad from "../../images/Mousepad.png";
 import { Link } from "react-router-dom";
+import Tshirt from "../../images/T-shirt.png";
 
 function Home() {
+  useEffect(() => {
+    document.body.style.overflow = "auto";
+  });
+
   const [isOpen, setIsOpen] = useState(false);
   const [overPath, setOverPath] = useState("");
 
@@ -26,25 +31,17 @@ function Home() {
 
   return (
     <div>
-      <img
-        src="https://www.etiguel.com.ar/archivos/1433271456.jpg"
-        alt="Background"
-        className="background"
-      />
+      <div id="background-container"></div>
       <div className="container-sm">
         <h1 className="text-center pt-5">Best Sellings</h1>
         <div className="row mt-auto g-4">
           <div className="col mt-5">
             <Product
-              src="https://www.originsmoda.com/wp-content/uploads/2020/08/MockUp-Remera-Hombre-Violeta-1.png"
+              src={Tshirt}
               alt="T-shirt"
               title="T-shirt"
               price="666"
-              onClick={() =>
-                openOverlay(
-                  "https://www.originsmoda.com/wp-content/uploads/2020/08/MockUp-Remera-Hombre-Violeta-1.png"
-                )
-              }
+              onClick={() => openOverlay(Tshirt)}
             />
           </div>
           <div className="col mt-5">
@@ -114,7 +111,7 @@ function Home() {
       <hr></hr>
       <div className="container pt-5">
         <div className="row mt-auto g-4">
-          <div className="col d-flex justify-content-center">
+          <div className="col d-flex mb-5 justify-content-center">
             <Card style={{ width: "18rem" }}>
               <div className="img-container">
                 <Card.Img
@@ -136,7 +133,7 @@ function Home() {
               </Card.Body>
             </Card>
           </div>
-          <div className="col d-flex justify-content-center">
+          <div className="col d-flex mb-5 justify-content-center">
             <Card style={{ width: "18rem" }}>
               <div className="img-container">
                 <Card.Img
@@ -158,7 +155,7 @@ function Home() {
               </Card.Body>
             </Card>
           </div>
-          <div className="col d-flex justify-content-center">
+          <div className="col d-flex mb-5 justify-content-center">
             <Card style={{ width: "18rem" }}>
               <div className="img-container">
                 <Card.Img

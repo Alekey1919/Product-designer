@@ -142,24 +142,6 @@ function DesignTShirt() {
     deleteHandler();
   };
 
-  const openSave = () => {
-    document
-      .querySelector("#save-container")
-      .classList.toggle("expandable-container-active");
-  };
-
-  const openColor = () => {
-    document
-      .querySelector("#color-container")
-      .classList.toggle("color-container-active");
-  };
-
-  const openOverlay = () => {
-    document
-      .querySelector(".overlay-container")
-      .classList.toggle("overlay-container-active");
-  };
-
   // Add Text Function
 
   const addText = () => {
@@ -471,20 +453,16 @@ function DesignTShirt() {
   return (
     <div className="component-container">
       <DesignBar
-        inputfileHandler={inputfileHandler}
         uploadImage={uploadImage}
         openAddText={openAddText}
         addText={addText}
         openAddImage={openAddImage}
-        urlImageHandler={urlImageHandler}
-        openSave={openSave}
         download={download}
-        openColor={openColor}
-        front={front}
-        back={back}
-        colorPicker={colorPicker}
-        openOverlay={openOverlay}
         submitHandler={submitHandler}
+        inputfileHandler={inputfileHandler}
+        colorPicker={colorPicker}
+        back={back}
+        front={front}
       />
     </div>
   );

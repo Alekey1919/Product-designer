@@ -1,11 +1,40 @@
 import "./DesignBar.css";
+import { useEffect } from "react";
 
 function DesignBar(props) {
+  // Sidebar functions
+
+  const openSave = () => {
+    document
+      .querySelector("#save-container")
+      .classList.toggle("expandable-container-active");
+  };
+
+  const openColor = () => {
+    document
+      .querySelector("#color-container")
+      .classList.toggle("color-container-active");
+  };
+
+  const openOverlay = () => {
+    document
+      .querySelector(".overlay-container")
+      .classList.toggle("overlay-container-active");
+  };
+
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+  });
+
   return (
     <div className="component-container">
       <div className="bar-container">
         <h1>Create your product</h1>
-        <button className="button btn-choose-color" onClick={props.openColor}>
+        <button
+          className="button btn-choose-color"
+          onClick={openColor}
+          id="open-color-btn"
+        >
           Choose Color
         </button>
         <div className="expandable-container" id="color-container">
@@ -136,7 +165,7 @@ function DesignBar(props) {
           </label>
           <hr className="hr" />
         </div>
-        <div className="front-back-container" id="dorito">
+        <div className="front-back-container" id="front-back">
           <button className="front-btn" onClick={props.front}>
             Front
           </button>
@@ -144,7 +173,7 @@ function DesignBar(props) {
             Back
           </button>
         </div>
-        <button className="button save-btn-container" onClick={props.openSave}>
+        <button className="button save-btn-container" onClick={openSave}>
           Save
         </button>
 
@@ -153,11 +182,7 @@ function DesignBar(props) {
             Download
           </button>
 
-          <button
-            className="save-btn"
-            id="save-degign"
-            onClick={props.openOverlay}
-          >
+          <button className="save-btn" id="save-degign" onClick={openOverlay}>
             Save to My Designs
           </button>
         </div>
@@ -174,7 +199,7 @@ function DesignBar(props) {
       </div>
       <div className="overlay-container">
         <div id="save-form-container">
-          <i class="fas fa-times" onClick={props.openOverlay}></i>
+          <i class="fas fa-times" onClick={openOverlay}></i>
           <form onSubmit={props.submitHandler}>
             <h1>Save design</h1>
             <label>

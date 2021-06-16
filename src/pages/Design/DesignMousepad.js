@@ -5,10 +5,10 @@ import { useState, useEffect } from "react";
 import "./DesignProducts.css";
 import { useHistory } from "react-router-dom";
 
-import WhiteCushion from "../../images/White-cushion.png";
-import BlackCushion from "../../images/Black-cushion.png";
+import WhiteMousepad from "../../images/White-mousepad.png";
+import BlackMousepad from "../../images/Black-mousepad.png";
 
-function DesignCushion() {
+function DesignMousepad() {
   const [canvas, setCanvas] = useState("");
   const canvasContainer = document.querySelector("#canvas-container");
   const history = useHistory();
@@ -24,9 +24,9 @@ function DesignCushion() {
   useEffect(() => {
     setCanvas(
       new fabric.Canvas("canvas", {
-        height: 600,
+        height: 650,
         width: 700,
-        backgroundImage: WhiteCushion,
+        backgroundImage: WhiteMousepad,
       })
     );
   }, []);
@@ -35,9 +35,9 @@ function DesignCushion() {
 
   const colorPicker = (color) => {
     if (color === "black") {
-      canvas.setBackgroundImage(BlackCushion, canvas.renderAll.bind(canvas));
+      canvas.setBackgroundImage(BlackMousepad, canvas.renderAll.bind(canvas));
     } else {
-      canvas.setBackgroundImage(WhiteCushion, canvas.renderAll.bind(canvas));
+      canvas.setBackgroundImage(WhiteMousepad, canvas.renderAll.bind(canvas));
     }
   };
 
@@ -290,4 +290,4 @@ function DesignCushion() {
   );
 }
 
-export default DesignCushion;
+export default DesignMousepad;

@@ -1,15 +1,17 @@
 import React from "react";
 import "./MyDesigns.css";
-import CustomDesign from "./CustomDesign.js";
 import { useState, useEffect } from "react";
 import DesignList from "./DesignsList";
 import Loading from "../../images/Loading.svg";
-import fire from "../../Firebase.js";
 
 function MyDesigns() {
   const [loading, setLoading] = useState(false);
   const [loadedDesigns, setloadedDesigns] = useState([]);
   const [reload, setReload] = useState(true);
+
+  useEffect(() => {
+    document.body.style.overflow = "auto";
+  });
 
   useEffect(() => {
     setLoading(true);

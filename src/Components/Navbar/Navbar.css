@@ -1,11 +1,12 @@
 #tiess-logo {
+  /* display: block; */
   width: 120px;
   margin-left: 15px;
 }
 
 #navbar-container {
   background-color: #201c2c;
-  height: 8vh;
+  /* height: 8vh; */
 }
 
 #inner-container {
@@ -24,7 +25,7 @@
   color: #fff;
 }
 
-#white {
+#burger {
   color: white;
   position: absolute;
   right: 20px;
@@ -38,4 +39,15 @@
 
 .navlink:hover {
   color: #f93c64;
+}
+
+@media (max-width: 766px) {
+  #inner-container {
+    display: block;
+  }
+  #collapser {
+    margin: 15px 0 0 15px;
+  }
+  #navbar-container {
+  }
 }

@@ -1,8 +1,13 @@
 import React from "react";
 import "./FAQ.css";
 import { NavLink } from "react-router-dom";
+import { useEffect } from "react";
 
 function FAQ() {
+  useEffect(() => {
+    document.body.style.overflow = "auto";
+  });
+
   return (
     <div className="faq-container">
       <h1 className="title">Frequent Asked Questions</h1>

@@ -2,8 +2,13 @@ import React from "react";
 import "./Design.css";
 import GeneralProduct from "../../Components/Products/GeneralProduct";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 function Design() {
+  useEffect(() => {
+    document.body.style.overflow = "auto";
+  });
+
   return (
     <div className="container">
       <h1 className="title">Select a product</h1>

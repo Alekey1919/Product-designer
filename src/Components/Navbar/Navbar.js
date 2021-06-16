@@ -7,44 +7,44 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <ReactBootStrap.Navbar expand="sm" id="navbar-container" expand="lg">
+    <ReactBootStrap.Navbar id="navbar-container" expand="md">
       <ReactBootStrap.Container id="inner-container" fluid="true">
         <ReactBootStrap.Navbar.Brand href="#home">
           <img src={tiessLogo} alt="Tiess Logo" id="tiess-logo" />
         </ReactBootStrap.Navbar.Brand>
         <ReactBootStrap.Navbar.Toggle
           aria-controls="basic-navbar-nav"
-          id="white"
+          id="burger"
         >
           <i class="fas fa-bars"></i>
         </ReactBootStrap.Navbar.Toggle>
         <ReactBootStrap.Navbar.Collapse id="basic-navbar-nav">
-          <ReactBootStrap.Nav className="me-auto">
-            <ReactBootStrap.Nav id="link-home">
+          <ReactBootStrap.Nav id="collapser" className="mr-auto">
+            <ReactBootStrap.Nav.Link id="link-home">
               <Link exact to="/" className="navlink">
                 Home
               </Link>
-            </ReactBootStrap.Nav>
-            <ReactBootStrap.Nav id="link-products">
+            </ReactBootStrap.Nav.Link>
+            <ReactBootStrap.Nav.Link id="link-products">
               <Link exact to="/products" className="navlink">
                 Products
               </Link>
-            </ReactBootStrap.Nav>
-            <ReactBootStrap.Nav id="link-design">
+            </ReactBootStrap.Nav.Link>
+            <ReactBootStrap.Nav.Link id="link-design">
               <Link exact to="/design" className="navlink">
                 Design
               </Link>
-            </ReactBootStrap.Nav>
-            <ReactBootStrap.Nav id="link-my-designs">
+            </ReactBootStrap.Nav.Link>
+            <ReactBootStrap.Nav.Link id="link-my-designs">
               <Link exact to="/my-designs" className="navlink">
                 My Designs
               </Link>
-            </ReactBootStrap.Nav>
-            <ReactBootStrap.Nav id="link-about">
+            </ReactBootStrap.Nav.Link>
+            <ReactBootStrap.Nav.Link id="link-about">
               <Link exact to="/about" className="navlink">
                 About
               </Link>
-            </ReactBootStrap.Nav>
+            </ReactBootStrap.Nav.Link>
           </ReactBootStrap.Nav>
         </ReactBootStrap.Navbar.Collapse>
       </ReactBootStrap.Container>

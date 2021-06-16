@@ -12,12 +12,16 @@ function DesignsList(props) {
         .database()
         .ref("my-designs/" + id)
         .remove()
-        .then(document.getElementById(id).parentNode.classList.add("none"));
+        .then(
+          document
+            .getElementById(id)
+            .parentNode.parentNode.classList.add("none")
+        );
     }
   };
 
   return (
-    <ul className="row mt-5 g-5 pl-0">
+    <ul className="row mt-5 g-5 pl-0 mx-0">
       {props.designs.map((design) => (
         <CustomDesign
           key={design.id}

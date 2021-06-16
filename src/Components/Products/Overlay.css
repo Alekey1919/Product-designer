@@ -7,20 +7,20 @@
   width: 100%;
   height: 100vh;
   background: rgba(0, 0, 0, 0.9);
-  /* display: none; */
   align-items: center;
   justify-content: center;
   z-index: 1;
+  backdrop-filter: blur(3px);
 }
 
 .overlay-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
   margin: auto;
-  margin-top: 8%;
-  height: 70%;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  z-index: 5;
+  width: 30%;
 }
 
 .overlay-active {
@@ -29,4 +29,16 @@
 
 .body-active {
   overflow: hidden;
+}
+
+@media (max-width: 992px) {
+  .overlay-img {
+    width: 50%;
+  }
+}
+
+@media (max-width: 560px) {
+  .overlay-img {
+    width: 70%;
+  }
 }

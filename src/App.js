@@ -18,11 +18,13 @@ import ScrollToTop from "./Components/ScrollToTop";
 import DesignTshirt from "./pages/Design/DesignT-shirt";
 import DesignHoodie from "./pages/Design/DesignHoodie";
 import DesignCushion from "./pages/Design/DesignCushion";
-import DesignSecso from "./pages/Design/DesignSecso";
+import DesignMug from "./pages/Design/DesignMug";
+import DesignBib from "./pages/Design/DesignBib";
+import DesignMousepad from "./pages/Design/DesignMousepad";
 
 const App = () => {
   return (
-    <Router>
+    <Router basename="/Product-designer">
       <ScrollToTop />
       <Navbar />
       <main>
@@ -50,6 +52,15 @@ const App = () => {
           </Route>
           <Route path="/design-cushion" exact>
             <DesignCushion />
+          </Route>
+          <Route path="/design-mug" exact>
+            <DesignMug />
+          </Route>
+          <Route path="/design-mousepad" exact>
+            <DesignMousepad />
+          </Route>
+          <Route path="/design-bib" exact>
+            <DesignBib />
           </Route>
           <Route path="/my-designs" exact>
             <MyDesigns />

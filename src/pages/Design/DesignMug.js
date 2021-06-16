@@ -5,40 +5,43 @@ import { useState, useEffect } from "react";
 import "./DesignProducts.css";
 import { useHistory } from "react-router-dom";
 
-import WhiteCushion from "../../images/White-cushion.png";
-import BlackCushion from "../../images/Black-cushion.png";
+import Mug from "../../images/Mug.png";
 
-function DesignCushion() {
+function DesignMug() {
   const [canvas, setCanvas] = useState("");
   const canvasContainer = document.querySelector("#canvas-container");
   const history = useHistory();
 
   useEffect(() => {
     document.getElementById("front-back").style.display = "none";
-    document.getElementById("yellow-color").style.display = "none";
-    document.getElementById("blue-color").style.display = "none";
-    document.getElementById("red-color").style.display = "none";
+    document.getElementById("open-color-btn").style.display = "none";
   });
   //Canvas initialization
 
   useEffect(() => {
     setCanvas(
       new fabric.Canvas("canvas", {
-        height: 600,
-        width: 700,
-        backgroundImage: WhiteCushion,
+        height: 650,
+        width: 600,
+        backgroundImage: Mug,
       })
     );
   }, []);
 
-  // Color Picker (product)
+  // Sidebar Functions
 
-  const colorPicker = (color) => {
-    if (color === "black") {
-      canvas.setBackgroundImage(BlackCushion, canvas.renderAll.bind(canvas));
-    } else {
-      canvas.setBackgroundImage(WhiteCushion, canvas.renderAll.bind(canvas));
-    }
+  const openAddImage = () => {
+    document
+      .querySelector("#upload-image-container")
+      .classList.toggle("expandable-container-active");
+    deleteHandler();
+  };
+
+  const openAddText = () => {
+    document
+      .querySelector("#add-text-container")
+      .classList.toggle("expandable-container-active");
+    deleteHandler();
   };
 
   // Delete Function
@@ -56,22 +59,6 @@ function DesignCushion() {
         }
       }
     });
-  };
-
-  // Sidebar functions
-
-  const openAddImage = () => {
-    document
-      .querySelector("#upload-image-container")
-      .classList.toggle("expandable-container-active");
-    deleteHandler();
-  };
-
-  const openAddText = () => {
-    document
-      .querySelector("#add-text-container")
-      .classList.toggle("expandable-container-active");
-    deleteHandler();
   };
 
   // Add Text Function
@@ -197,6 +184,10 @@ function DesignCushion() {
 
   // Upload image
 
+  function inputfileHandler() {
+    document.querySelector("#input-file").click();
+  }
+
   function uploadImage(e) {
     var imageTag = document.createElement("img");
     imageTag.crossOrigin = "anonymous";
@@ -219,25 +210,6 @@ function DesignCushion() {
     reader.readAsDataURL(e.target.files[0]);
   }
 
-  function inputfileHandler() {
-    document.querySelector("#input-file").click();
-  }
-
-  function urlImageHandler() {
-    let url = document.querySelector("#url-input").value;
-    var imageURL = new fabric.Image.fromURL(url, (image) => {
-      image.set({
-        left: 10,
-        top: 10,
-      });
-      image.crossOrigin = "anonymous";
-      image.scaleToWidth(canvas.width / 3);
-
-      canvas.add(image);
-      canvas.renderAll();
-    });
-  }
-
   //  Donwload
 
   function download() {
@@ -255,7 +227,7 @@ function DesignCushion() {
   const submitHandler = (event) => {
     event.preventDefault();
     let name = document.querySelector("#name-input").value;
-    let product = "Cushion";
+    let product = "Mug";
     let url = canvas.toDataURL();
     let productData = {
       name: name,
@@ -284,10 +256,9 @@ function DesignCushion() {
         download={download}
         submitHandler={submitHandler}
         inputfileHandler={inputfileHandler}
-        colorPicker={colorPicker}
       />
     </div>
   );
 }
 
-export default DesignCushion;
+export default DesignMug;

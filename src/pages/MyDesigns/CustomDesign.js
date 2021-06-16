@@ -40,7 +40,7 @@ function CustomDesign(props) {
           <div className="custom-product-container" id={props.id}>
             <img
               src={props.src0}
-              width="300px"
+              width="320px"
               height="320px"
               alt="Front"
               className="custom-product-image mt-3"
