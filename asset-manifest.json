@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/Product-designer/static/css/main.9190e2c2.chunk.css",
-    "main.js": "/Product-designer/static/js/main.f1bd61f0.chunk.js",
-    "main.js.map": "/Product-designer/static/js/main.f1bd61f0.chunk.js.map",
+    "main.css": "/Product-designer/static/css/main.844056a0.chunk.css",
+    "main.js": "/Product-designer/static/js/main.cded3c97.chunk.js",
+    "main.js.map": "/Product-designer/static/js/main.cded3c97.chunk.js.map",
     "runtime-main.js": "/Product-designer/static/js/runtime-main.5b6206a8.js",
     "runtime-main.js.map": "/Product-designer/static/js/runtime-main.5b6206a8.js.map",
     "static/css/2.150d169a.chunk.css": "/Product-designer/static/css/2.150d169a.chunk.css",
-    "static/js/2.21eac617.chunk.js": "/Product-designer/static/js/2.21eac617.chunk.js",
-    "static/js/2.21eac617.chunk.js.map": "/Product-designer/static/js/2.21eac617.chunk.js.map",
+    "static/js/2.c36637ec.chunk.js": "/Product-designer/static/js/2.c36637ec.chunk.js",
+    "static/js/2.c36637ec.chunk.js.map": "/Product-designer/static/js/2.c36637ec.chunk.js.map",
     "index.html": "/Product-designer/index.html",
     "static/css/2.150d169a.chunk.css.map": "/Product-designer/static/css/2.150d169a.chunk.css.map",
-    "static/css/main.9190e2c2.chunk.css.map": "/Product-designer/static/css/main.9190e2c2.chunk.css.map",
-    "static/js/2.21eac617.chunk.js.LICENSE.txt": "/Product-designer/static/js/2.21eac617.chunk.js.LICENSE.txt",
+    "static/css/main.844056a0.chunk.css.map": "/Product-designer/static/css/main.844056a0.chunk.css.map",
+    "static/js/2.c36637ec.chunk.js.LICENSE.txt": "/Product-designer/static/js/2.c36637ec.chunk.js.LICENSE.txt",
     "static/media/Barbijo.450f655f.png": "/Product-designer/static/media/Barbijo.450f655f.png",
     "static/media/Bib.5a768b24.png": "/Product-designer/static/media/Bib.5a768b24.png",
     "static/media/Black-cushion.f994ea0d.png": "/Product-designer/static/media/Black-cushion.f994ea0d.png",
@@ -37,7 +37,9 @@
     "static/media/White-hoodie-back.7def0a6e.png": "/Product-designer/static/media/White-hoodie-back.7def0a6e.png",
     "static/media/White-hoodie.77227b7d.png": "/Product-designer/static/media/White-hoodie.77227b7d.png",
     "static/media/White-mousepad.ae9e2f4e.png": "/Product-designer/static/media/White-mousepad.ae9e2f4e.png",
+    "static/media/White-t-shirt-back-responsive.a5ddc8c8.png": "/Product-designer/static/media/White-t-shirt-back-responsive.a5ddc8c8.png",
     "static/media/White-t-shirt-back.e2bf3d3b.png": "/Product-designer/static/media/White-t-shirt-back.e2bf3d3b.png",
+    "static/media/White-t-shirt-responsive.5d8e1089.png": "/Product-designer/static/media/White-t-shirt-responsive.5d8e1089.png",
     "static/media/White-t-shirt.16a851f3.png": "/Product-designer/static/media/White-t-shirt.16a851f3.png",
     "static/media/Yellow-hoodie-back.1c43ffca.png": "/Product-designer/static/media/Yellow-hoodie-back.1c43ffca.png",
     "static/media/Yellow-hoodie.530c6500.png": "/Product-designer/static/media/Yellow-hoodie.530c6500.png",
@@ -47,8 +49,8 @@
   "entrypoints": [
     "static/js/runtime-main.5b6206a8.js",
     "static/css/2.150d169a.chunk.css",
-    "static/js/2.21eac617.chunk.js",
-    "static/css/main.9190e2c2.chunk.css",
-    "static/js/main.f1bd61f0.chunk.js"
+    "static/js/2.c36637ec.chunk.js",
+    "static/css/main.844056a0.chunk.css",
+    "static/js/main.cded3c97.chunk.js"
   ]
 }
