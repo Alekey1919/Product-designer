@@ -11,7 +11,7 @@ function FAQ() {
   return (
     <div className="faq-container">
       <h1 className="title">Frequent Asked Questions</h1>
-      <ul className="list-container">
+      <ul className="list-container p-0">
         <li className="list-item">
           <h2>Question 1</h2>
           <p>

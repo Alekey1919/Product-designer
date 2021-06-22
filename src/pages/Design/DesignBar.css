@@ -2,7 +2,7 @@
 
 .component-container {
   width: 100%;
-  height: 93vh;
+  height: 95vh;
 }
 
 .overflowy-hidden {
@@ -152,7 +152,8 @@ input[type="color"]::-webkit-color-swatch {
   border: none;
 }
 
-#input-file {
+#input-file,
+#input-file-responsive {
   display: none;
 }
 
@@ -166,13 +167,20 @@ input[type="color"]::-webkit-color-swatch {
 }
 
 .front-btn,
-.back-btn {
+.back-btn,
+.front-btn-responsive,
+.back-btn-responsive {
   width: 45%;
   padding: 8px;
   background-color: #f93c64;
   border-radius: 5px;
   border: none;
   color: #fff;
+}
+
+.front-btn-responsive,
+.back-btn-responsive {
+  display: none;
 }
 
 /* SAVE */
@@ -319,4 +327,122 @@ input[type="color"]::-webkit-color-swatch {
 
 .save-form-btn:active {
   background-color: #ff476e;
+}
+
+/* Responsive Design */
+
+@media (max-width: 999px) {
+  /* General */
+
+  .bar-container {
+    position: absolute;
+    height: 100px;
+    width: 100vw;
+    bottom: 0%;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .bar-container h1 {
+    display: none;
+  }
+
+  .button {
+    width: 100px;
+    height: 60px;
+  }
+
+  .front-back-container {
+    display: none;
+  }
+
+  .front-btn-responsive,
+  .back-btn-responsive {
+    display: block;
+  }
+
+  .front-btn-responsive,
+  .back-btn-responsive {
+    width: 100px;
+    height: 60px;
+    margin: auto;
+  }
+
+  .canvas-container {
+    margin-top: 10%;
+  }
+
+  /* Pop ups */
+
+  .btn-choose-color-responsive {
+    position: absolute;
+    left: 3%;
+  }
+
+  .color-container-responsive {
+    display: block;
+    position: absolute;
+    top: 15px;
+  }
+
+  .canvas-container {
+    z-index: 1;
+  }
+
+  .bar-container {
+    z-index: 20;
+  }
+
+  #add-text-container,
+  #upload-image-container,
+  #save-container {
+    display: none;
+  }
+
+  /* Text */
+
+  #add-text-container-responsive {
+    position: absolute;
+    bottom: 98px;
+    left: 100px;
+    right: 100px;
+    margin: auto;
+    background-color: rgba(32, 28, 44, 0.92);
+    backdrop-filter: blur(4px);
+    z-index: 5;
+  }
+
+  /* Upload */
+
+  #upload-image-container-responsive {
+    position: absolute;
+    bottom: 98px;
+    left: 250px;
+    right: 250px;
+    margin: auto;
+    background-color: rgba(32, 28, 44, 0.98);
+    backdrop-filter: blur(4px);
+    z-index: 5;
+  }
+
+  .upload-image-btn {
+    margin: auto;
+  }
+
+  /* Save */
+
+  #save-container-responsive {
+    position: absolute;
+    bottom: 98px;
+    left: 250px;
+    right: 250px;
+    margin: auto;
+    background-color: rgba(32, 28, 44, 0.98);
+    backdrop-filter: blur(4px);
+    z-index: 5;
+  }
+}
+
+.display-none {
+  display: none;
 }

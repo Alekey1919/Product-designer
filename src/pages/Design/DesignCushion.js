@@ -18,6 +18,8 @@ function DesignCushion() {
     document.getElementById("yellow-color").style.display = "none";
     document.getElementById("blue-color").style.display = "none";
     document.getElementById("red-color").style.display = "none";
+    document.querySelector(".front-btn-responsive").style.display = "none";
+    document.querySelector(".back-btn-responsive").style.display = "none";
   });
   //Canvas initialization
 

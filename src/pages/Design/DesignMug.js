@@ -15,6 +15,8 @@ function DesignMug() {
   useEffect(() => {
     document.getElementById("front-back").style.display = "none";
     document.getElementById("open-color-btn").style.display = "none";
+    document.querySelector(".front-btn-responsive").style.display = "none";
+    document.querySelector(".back-btn-responsive").style.display = "none";
   });
   //Canvas initialization
 

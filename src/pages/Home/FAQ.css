@@ -50,3 +50,17 @@ li > p {
   font-size: 50px;
   color: lightcoral;
 }
+
+@media (max-width: 669px) {
+  .btn-back {
+    position: absolute;
+    left: 20px;
+  }
+}
+
+@media (max-width: 440px) {
+  .btn-back {
+    position: absolute;
+    left: 5px;
+  }
+}
