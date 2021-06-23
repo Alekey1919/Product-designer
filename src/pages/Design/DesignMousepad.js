@@ -6,10 +6,12 @@ import "./DesignProducts.css";
 import { useHistory } from "react-router-dom";
 
 import WhiteMousepad from "../../images/White-mousepad.png";
+import WhiteMousepadResponsive from "../../images/White-mousepad-responsive.png";
 import BlackMousepad from "../../images/Black-mousepad.png";
 
 function DesignMousepad() {
   const [canvas, setCanvas] = useState("");
+  const [screenWidth, setScreenWidth] = useState(window.screen.width);
   const canvasContainer = document.querySelector("#canvas-container");
   const history = useHistory();
 
@@ -21,26 +23,72 @@ function DesignMousepad() {
     document.querySelector(".front-btn-responsive").style.display = "none";
     document.querySelector(".back-btn-responsive").style.display = "none";
   });
+
+  // Resize listener
+
+  window.addEventListener("resize", () => {
+    if (screenWidth <= 999) {
+      if (canvas.width >= 504) {
+        if (canvas.setDimensions) {
+          //If the original width res is less than 999 setDimensions is not a function
+          canvas.setDimensions({
+            width: 450,
+            height: 404,
+          });
+          canvas.backgroundImage.scaleToWidth(450);
+          canvas.backgroundImage.scaleToHeight(404);
+          canvas.renderAll();
+        }
+      }
+    } else {
+      if (canvas.width <= 450) {
+        canvas.setDimensions({
+          width: 504,
+          height: 452,
+        });
+        canvas.backgroundImage.scaleToWidth(504);
+        canvas.backgroundImage.scaleToHeight(452);
+        canvas.renderAll();
+      }
+    }
+    setScreenWidth(window.screen.width);
+  });
+
   //Canvas initialization
 
   useEffect(() => {
-    setCanvas(
-      new fabric.Canvas("canvas", {
-        height: 650,
-        width: 700,
-        backgroundImage: WhiteMousepad,
-      })
-    );
+    if (screenWidth >= 999) {
+      setCanvas(
+        new fabric.Canvas("canvas", {
+          width: 504,
+          height: 452,
+          backgroundImage: WhiteMousepad,
+        })
+      );
+    } else {
+      setCanvas(
+        new fabric.Canvas("canvas", {
+          width: 450,
+          height: 404,
+          backgroundImage: WhiteMousepadResponsive,
+        })
+      );
+    }
   }, []);
 
   // Color Picker (product)
 
   const colorPicker = (color) => {
     if (color === "black") {
-      canvas.setBackgroundImage(BlackMousepad, canvas.renderAll.bind(canvas));
+      canvas.setBackgroundImage(BlackMousepad);
     } else {
-      canvas.setBackgroundImage(WhiteMousepad, canvas.renderAll.bind(canvas));
+      canvas.setBackgroundImage(WhiteMousepad);
     }
+    setTimeout(() => {
+      //If it's immediate it doesn't work
+      canvas.backgroundImage.scaleToWidth(canvas.width);
+      canvas.renderAll();
+    }, 100);
   };
 
   // Delete Function

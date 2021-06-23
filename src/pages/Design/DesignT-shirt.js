@@ -29,21 +29,22 @@ function DesignTShirt() {
   // Resize listener
 
   window.addEventListener("resize", () => {
-      if (screenWidth <= 999) {
-        if (canvas.width >= 600) { 
-          if (canvas.setDimensions) { //If the original width res is less than 999 setDimensions is not a function
-        canvas.setDimensions({
-          width: 430,
-          height: 500,
-        });
-        canvas.backgroundImage.scaleToWidth(430);
-        canvas.renderAll();
-        canvas1.setDimensions({
-          width: 430,
-          height: 500,
-        });
-        canvas1.backgroundImage.scaleToWidth(430);
-        canvas1.renderAll();
+    if (screenWidth <= 999) {
+      if (canvas.width >= 600) {
+        if (canvas.setDimensions) {
+          //If the original width res is less than 999 setDimensions is not a function
+          canvas.setDimensions({
+            width: 430,
+            height: 500,
+          });
+          canvas.backgroundImage.scaleToWidth(430);
+          canvas.renderAll();
+          canvas1.setDimensions({
+            width: 430,
+            height: 500,
+          });
+          canvas1.backgroundImage.scaleToWidth(430);
+          canvas1.renderAll();
         }
       }
     } else {
@@ -62,20 +63,20 @@ function DesignTShirt() {
         canvas1.renderAll();
       }
     }
-      setScreenWidth(window.screen.width);
+    setScreenWidth(window.screen.width);
   });
-  
+
   //Canvas initialization
 
   useEffect(() => {
     if (screenWidth >= 999) {
-    setCanvas(
-      new fabric.Canvas("canvas", {
-        height: 700,
-        width: 600,
-        backgroundImage: WhiteTshirt,
-      })
-    );
+      setCanvas(
+        new fabric.Canvas("canvas", {
+          height: 700,
+          width: 600,
+          backgroundImage: WhiteTshirt,
+        })
+      );
     } else {
       setCanvas(
         new fabric.Canvas("canvas", {
@@ -89,13 +90,13 @@ function DesignTShirt() {
 
   useEffect(() => {
     if (screenWidth >= 999) {
-    setCanvas1(
-      new fabric.Canvas("canvas1", {
-        height: 700,
-        width: 600,
-        backgroundImage: WhiteTshirtBack,
-      })
-    );
+      setCanvas1(
+        new fabric.Canvas("canvas1", {
+          height: 700,
+          width: 600,
+          backgroundImage: WhiteTshirtBack,
+        })
+      );
     } else {
       setCanvas1(
         new fabric.Canvas("canvas1", {
@@ -124,35 +125,30 @@ function DesignTShirt() {
   const colorPicker = (color) => {
     if (color === "black") {
       canvas.setBackgroundImage(BlackTshirt);
-      canvas1.setBackgroundImage(
-        BlackTshirtBack);
+      canvas1.setBackgroundImage(BlackTshirtBack);
     } else if (color === "red") {
       canvas.setBackgroundImage(RedTshirt);
-      canvas1.setBackgroundImage(
-        RedTshirtBack);
+      canvas1.setBackgroundImage(RedTshirtBack);
     } else if (color === "yellow") {
       canvas.setBackgroundImage(YellowTshirt);
-      canvas1.setBackgroundImage(
-        YellowTshirtBack);
+      canvas1.setBackgroundImage(YellowTshirtBack);
     } else if (color === "yellow") {
       canvas.setBackgroundImage(YellowTshirt);
-      canvas1.setBackgroundImage(
-        YellowTshirtBack);
+      canvas1.setBackgroundImage(YellowTshirtBack);
     } else if (color === "blue") {
       canvas.setBackgroundImage(BlueTshirt);
-      canvas1.setBackgroundImage(
-        BlueTshirtBack);
+      canvas1.setBackgroundImage(BlueTshirtBack);
     } else {
       canvas.setBackgroundImage(WhiteTshirt);
-      canvas1.setBackgroundImage(
-        WhiteTshirtBack);
+      canvas1.setBackgroundImage(WhiteTshirtBack);
     }
-    setTimeout(() => {  //If it's immediate it doesn't work
+    setTimeout(() => {
+      //If it's immediate it doesn't work
       canvas.backgroundImage.scaleToWidth(canvas.width);
-      canvas.renderAll()
+      canvas.renderAll();
       canvas1.backgroundImage.scaleToWidth(canvas1.width);
-      canvas1.renderAll()
-    }, 100)
+      canvas1.renderAll();
+    }, 100);
   };
 
   // Delete Function
@@ -193,6 +189,12 @@ function DesignTShirt() {
       document
         .querySelector("#upload-image-container-responsive")
         .classList.toggle("expandable-container-active");
+      document
+        .getElementById("add-text-container-responsive")
+        .classList.remove("expandable-container-active");
+      document
+        .getElementById("save-container-responsive")
+        .classList.remove("expandable-container-active");
     }
     deleteHandler();
   };
@@ -206,6 +208,12 @@ function DesignTShirt() {
       document
         .querySelector("#add-text-container-responsive")
         .classList.toggle("expandable-container-active");
+      document
+        .getElementById("upload-image-container-responsive")
+        .classList.remove("expandable-container-active");
+      document
+        .getElementById("save-container-responsive")
+        .classList.remove("expandable-container-active");
     }
     deleteHandler();
   };
@@ -680,7 +688,7 @@ function DesignTShirt() {
 
   // Upload image
 
-  function uploadImage(e) {
+  const uploadImage = (e) => {
     var imageTag = document.createElement("img");
     imageTag.crossOrigin = "anonymous";
     imageTag.src = e.target;
@@ -703,69 +711,50 @@ function DesignTShirt() {
       };
     };
     reader.readAsDataURL(e.target.files[0]);
-  }
+  };
 
-  function inputfileHandler() {
+  const inputfileHandler = () => {
     document.querySelector("#input-file").click();
-  }
+  };
 
-  function urlImageHandler() {
-    //   let url = document.querySelector("#url-input").value;
-    //   var imageURL = document.createElement("img");
-    //   imageURL.src = url;
-    //   fabric.util.loadImage(
-    //     "url",
-    //     function (image) {
-    //       var object = new fabric.Image(imageURL);
-    //       object.set({
-    //         left: 20,
-    //         top: 20,
-    //       });
-    //       canvas.add(object);
-    //     },
-    //     null,
-    //     {
-    //       crossOrigin: "Anonymous",
-    //     }
-    //   );
-    // }
-    //   var imageURL = new fabric.Image.fromURL(url, (image) => {
-    //     image.set({
-    //       left: 10,
-    //       top: 10,
-    //     });
-    //     image.crossOrigin = "anonymous";
-    //     image.scaleToWidth(canvas.width / 3);
-    //     if (canvasContainer.style.display != "none") {
-    //       canvas.add(image);
-    //       canvas.renderAll();
-    //     } else {
-    //       canvas1.add(image);
-    //       canvas1.renderAll();
-    //     }
-    //   });
-    // }
-    let url = document.querySelector("#url-input").value;
-    var imageURL = new fabric.Image.fromURL(url, (image) => {
-      image.set({
-        left: 10,
-        top: 10,
-      });
-      image.crossOrigin = "anonymous";
-      image.scaleToWidth(canvas.width / 3);
-      if (canvasContainer.style.display != "none") {
-        canvas.add(image);
-        canvas.renderAll();
-      } else {
-        canvas1.add(image);
-        canvas1.renderAll();
-      }
-    });
-  }
+  // const urlImageHandler = () => {
+  //     var imageURL = new fabric.Image.fromURL(url, (image) => {
+  //       image.set({
+  //         left: 10,
+  //         top: 10,
+  //       });
+  //       image.crossOrigin = "anonymous";
+  //       image.scaleToWidth(canvas.width / 3);
+  //       if (canvasContainer.style.display != "none") {
+  //         canvas.add(image);
+  //         canvas.renderAll();
+  //       } else {
+  //         canvas1.add(image);
+  //         canvas1.renderAll();
+  //       }
+  //     });
+  //   }
+  //   let url = document.querySelector("#url-input").value;
+  //   var imageURL = new fabric.Image.fromURL(url, (image) => {
+  //     image.set({
+  //       left: 10,
+  //       top: 10,
+  //     });
+  //     image.crossOrigin = "anonymous";
+  //     image.scaleToWidth(canvas.width / 3);
+  //     if (canvasContainer.style.display != "none") {
+  //       canvas.add(image);
+  //       canvas.renderAll();
+  //     } else {
+  //       canvas1.add(image);
+  //       canvas1.renderAll();
+  //     }
+  //   });
+  // };
 
   //  Donwload
 
-  function download() {
+  const download = () => {
     var imageDownload = canvas
       .toDataURL("image/png")
       .replace("image/png", "image/octet-stream");
@@ -780,7 +769,7 @@ function DesignTShirt() {
     link1.download = "Back.png";
     link1.href = imageDownload1;
     link1.click();
-  }
+  };
 
   // Form Submit
 

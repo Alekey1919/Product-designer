@@ -6,10 +6,12 @@ import "./DesignProducts.css";
 import { useHistory } from "react-router-dom";
 
 import WhiteCushion from "../../images/White-cushion.png";
+import WhiteCushionResponsive from "../../images/White-cushion-responsive.png";
 import BlackCushion from "../../images/Black-cushion.png";
 
 function DesignCushion() {
   const [canvas, setCanvas] = useState("");
+  const [screenWidth, setScreenWidth] = useState(window.screen.width);
   const canvasContainer = document.querySelector("#canvas-container");
   const history = useHistory();
 
@@ -21,26 +23,70 @@ function DesignCushion() {
     document.querySelector(".front-btn-responsive").style.display = "none";
     document.querySelector(".back-btn-responsive").style.display = "none";
   });
+
+  // Resize listener
+
+  window.addEventListener("resize", () => {
+    if (screenWidth <= 999) {
+      if (canvas.width >= 600) {
+        if (canvas.setDimensions) {
+          //If the original width res is less than 999 setDimensions is not a function
+          canvas.setDimensions({
+            width: 462,
+            height: 500,
+          });
+          canvas.backgroundImage.scaleToWidth(462);
+          canvas.renderAll();
+        }
+      }
+    } else {
+      if (canvas.width <= 462) {
+        canvas.setDimensions({
+          width: 600,
+          height: 700,
+        });
+        canvas.backgroundImage.scaleToWidth(600);
+        canvas.renderAll();
+      }
+    }
+    setScreenWidth(window.screen.width);
+  });
+
   //Canvas initialization
 
   useEffect(() => {
-    setCanvas(
-      new fabric.Canvas("canvas", {
-        height: 600,
-        width: 700,
-        backgroundImage: WhiteCushion,
-      })
-    );
+    if (screenWidth >= 999) {
+      setCanvas(
+        new fabric.Canvas("canvas", {
+          height: 600,
+          width: 650,
+          backgroundImage: WhiteCushion,
+        })
+      );
+    } else {
+      setCanvas(
+        new fabric.Canvas("canvas", {
+          height: 462,
+          width: 500,
+          backgroundImage: WhiteCushionResponsive,
+        })
+      );
+    }
   }, []);
 
   // Color Picker (product)
 
   const colorPicker = (color) => {
     if (color === "black") {
-      canvas.setBackgroundImage(BlackCushion, canvas.renderAll.bind(canvas));
+      canvas.setBackgroundImage(BlackCushion);
     } else {
-      canvas.setBackgroundImage(WhiteCushion, canvas.renderAll.bind(canvas));
+      canvas.setBackgroundImage(WhiteCushion);
     }
+    setTimeout(() => {
+      //If it's immediate it doesn't work
+      canvas.backgroundImage.scaleToWidth(canvas.width);
+      canvas.renderAll();
+    }, 100);
   };
 
   // Delete Function
@@ -63,33 +109,243 @@ function DesignCushion() {
   // Sidebar functions
 
   const openAddImage = () => {
-    document
-      .querySelector("#upload-image-container")
-      .classList.toggle("expandable-container-active");
+    if (window.screen.width > 999) {
+      document
+        .querySelector("#upload-image-container")
+        .classList.toggle("expandable-container-active");
+    } else {
+      document
+        .querySelector("#upload-image-container-responsive")
+        .classList.toggle("expandable-container-active");
+      document
+        .getElementById("add-text-container-responsive")
+        .classList.remove("expandable-container-active");
+      document
+        .getElementById("save-container-responsive")
+        .classList.remove("expandable-container-active");
+    }
     deleteHandler();
   };
 
   const openAddText = () => {
-    document
-      .querySelector("#add-text-container")
-      .classList.toggle("expandable-container-active");
+    if (window.screen.width > 999) {
+      document
+        .querySelector("#add-text-container")
+        .classList.toggle("expandable-container-active");
+    } else {
+      document
+        .querySelector("#add-text-container-responsive")
+        .classList.toggle("expandable-container-active");
+      document
+        .getElementById("upload-image-container-responsive")
+        .classList.remove("expandable-container-active");
+      document
+        .getElementById("save-container-responsive")
+        .classList.remove("expandable-container-active");
+    }
     deleteHandler();
   };
 
   // Add Text Function
 
   const addText = () => {
-    let textInput = document.querySelector("#text").value;
-    let textFont = document.querySelector("#font").value;
-    let textSize = 38;
-    let boldCheckbox = document.querySelector("#bold");
-    let italicCheckbox = document.querySelector("#italic");
-    let underlineCheckbox = document.querySelector("#underline");
-    let linethroughCheckbox = document.querySelector("#linethrough");
-    if (document.querySelector("#font-size").value) {
-      textSize = document.querySelector("#font-size").value;
+    let textInput;
+    let textFont;
+    let textSize;
+    let boldCheckbox;
+    let italicCheckbox;
+    let underlineCheckbox;
+    let linethroughCheckbox;
+    let textColor;
+
+    if (window.screen.width > 999) {
+      textInput = document.querySelector("#text").value;
+      textFont = document.querySelector("#font").value;
+      textSize = 38;
+      boldCheckbox = document.querySelector("#bold");
+      italicCheckbox = document.querySelector("#italic");
+      underlineCheckbox = document.querySelector("#underline");
+      linethroughCheckbox = document.querySelector("#linethrough");
+      if (document.querySelector("#font-size").value) {
+        textSize = document.querySelector("#font-size").value;
+      }
+      textColor = document.querySelector("#color-picker").value;
+
+      // Listeners
+
+      // Font
+
+      let fontFamily = document.querySelector("#font");
+      fontFamily.addEventListener("change", () => {
+        if (canvas.getActiveObject() != null) {
+          canvas.getActiveObject().set("fontFamily", fontFamily.value);
+          canvas.renderAll();
+        }
+      });
+
+      // Font-size
+
+      let fontSize = document.querySelector("#font-size");
+      fontSize.addEventListener("change", () => {
+        if (canvas.getActiveObject() != null) {
+          canvas.getActiveObject().set("fontSize", fontSize.value);
+          canvas.renderAll();
+        }
+      });
+
+      // Checkbox listeners
+
+      boldCheckbox.addEventListener("change", () => {
+        if (canvas.getActiveObject() != null) {
+          if (boldCheckbox.checked) {
+            canvas.getActiveObject().set("fontWeight", "bold");
+            canvas.renderAll();
+          } else {
+            canvas.getActiveObject().set("fontWeight", "normal");
+            canvas.renderAll();
+          }
+        }
+      });
+
+      italicCheckbox.addEventListener("change", () => {
+        if (canvas.getActiveObject() != null) {
+          if (italicCheckbox.checked) {
+            canvas.getActiveObject().set("fontStyle", "italic");
+            canvas.renderAll();
+          } else {
+            canvas.getActiveObject().set("fontStyle", "normal");
+            canvas.renderAll();
+          }
+        }
+      });
+
+      underlineCheckbox.addEventListener("change", () => {
+        if (canvas.getActiveObject() != null) {
+          if (underlineCheckbox.checked) {
+            canvas.getActiveObject().set("underline", true);
+            canvas.renderAll();
+          } else {
+            canvas.getActiveObject().set("underline", false);
+            canvas.renderAll();
+          }
+        }
+      });
+
+      linethroughCheckbox.addEventListener("change", () => {
+        if (canvas.getActiveObject() != null) {
+          if (linethroughCheckbox.checked) {
+            canvas.getActiveObject().set("linethrough", true);
+            canvas.renderAll();
+          } else {
+            canvas.getActiveObject().set("linethrough", false);
+            canvas.renderAll();
+          }
+        }
+      });
+
+      // Color picker onchange
+
+      document.getElementById("color-picker").onchange = function () {
+        if (canvas.getActiveObject() != null) {
+          canvas.getActiveObject().set("fill", this.value);
+          canvas.renderAll();
+        }
+      };
+    } else {
+      textInput = document.querySelector("#text-responsive").value;
+      textFont = document.querySelector("#font-responsive").value;
+      textSize = 38;
+      boldCheckbox = document.querySelector("#bold-responsive");
+      italicCheckbox = document.querySelector("#italic-responsive");
+      underlineCheckbox = document.querySelector("#underline-responsive");
+      linethroughCheckbox = document.querySelector("#linethrough-responsive");
+      if (document.querySelector("#font-size-responsive").value) {
+        textSize = document.querySelector("#font-size-responsive").value;
+      }
+      textColor = document.querySelector("#color-picker-responsive").value;
+
+      // Listeners
+
+      // Font
+
+      let fontFamily = document.querySelector("#font-responsive");
+      fontFamily.addEventListener("change", () => {
+        if (canvas.getActiveObject() != null) {
+          canvas.getActiveObject().set("fontFamily", fontFamily.value);
+          canvas.renderAll();
+        }
+      });
+
+      // Font-size
+
+      let fontSize = document.querySelector("#font-size-responsive");
+      fontSize.addEventListener("change", () => {
+        if (canvas.getActiveObject() != null) {
+          canvas.getActiveObject().set("fontSize", fontSize.value);
+          canvas.renderAll();
+        }
+      });
+
+      // Checkbox listeners
+
+      boldCheckbox.addEventListener("change", () => {
+        if (canvas.getActiveObject() != null) {
+          if (boldCheckbox.checked) {
+            canvas.getActiveObject().set("fontWeight", "bold");
+            canvas.renderAll();
+          } else {
+            canvas.getActiveObject().set("fontWeight", "normal");
+            canvas.renderAll();
+          }
+        }
+      });
+
+      italicCheckbox.addEventListener("change", () => {
+        if (canvas.getActiveObject() != null) {
+          if (italicCheckbox.checked) {
+            canvas.getActiveObject().set("fontStyle", "italic");
+            canvas.renderAll();
+          } else {
+            canvas.getActiveObject().set("fontStyle", "normal");
+            canvas.renderAll();
+          }
+        }
+      });
+
+      underlineCheckbox.addEventListener("change", () => {
+        if (canvas.getActiveObject() != null) {
+          if (underlineCheckbox.checked) {
+            canvas.getActiveObject().set("underline", true);
+            canvas.renderAll();
+          } else {
+            canvas.getActiveObject().set("underline", false);
+            canvas.renderAll();
+          }
+        }
+      });
+
+      linethroughCheckbox.addEventListener("change", () => {
+        if (canvas.getActiveObject() != null) {
+          if (linethroughCheckbox.checked) {
+            canvas.getActiveObject().set("linethrough", true);
+            canvas.renderAll();
+          } else {
+            canvas.getActiveObject().set("linethrough", false);
+            canvas.renderAll();
+          }
+        }
+      });
+
+      // Color picker onchange
+
+      document.getElementById("color-picker-responsive").onchange =
+        function () {
+          if (canvas.getActiveObject() != null) {
+            canvas.getActiveObject().set("fill", this.value);
+            canvas.renderAll();
+          }
+        };
     }
-    let textColor = document.querySelector("#color-picker").value;
 
     var text = new fabric.IText(textInput, {
       fontFamily: textFont,
@@ -225,20 +481,20 @@ function DesignCushion() {
     document.querySelector("#input-file").click();
   }
 
-  function urlImageHandler() {
-    let url = document.querySelector("#url-input").value;
-    var imageURL = new fabric.Image.fromURL(url, (image) => {
-      image.set({
-        left: 10,
-        top: 10,
-      });
-      image.crossOrigin = "anonymous";
-      image.scaleToWidth(canvas.width / 3);
+  // function urlImageHandler() {
+  //   let url = document.querySelector("#url-input").value;
+  //   var imageURL = new fabric.Image.fromURL(url, (image) => {
+  //     image.set({
+  //       left: 10,
+  //       top: 10,
+  //     });
+  //     image.crossOrigin = "anonymous";
+  //     image.scaleToWidth(canvas.width / 3);
 
-      canvas.add(image);
-      canvas.renderAll();
-    });
-  }
+  //     canvas.add(image);
+  //     canvas.renderAll();
+  //   });
+  // }
 
   //  Donwload
 

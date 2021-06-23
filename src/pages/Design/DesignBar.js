@@ -13,6 +13,12 @@ function DesignBar(props) {
       document
         .querySelector("#save-container-responsive")
         .classList.toggle("expandable-container-active");
+      document
+        .getElementById("upload-image-container-responsive")
+        .classList.remove("expandable-container-active");
+      document
+        .getElementById("add-text-container-responsive")
+        .classList.remove("expandable-container-active");
     }
   };
 
@@ -47,6 +53,15 @@ function DesignBar(props) {
         .classList.remove("expandable-container-active");
       document
         .querySelector("#save-container")
+        .classList.remove("expandable-container-active");
+      document
+        .getElementById("upload-image-container-responsive")
+        .classList.remove("expandable-container-active");
+      document
+        .getElementById("save-container-responsive")
+        .classList.remove("expandable-container-active");
+      document
+        .getElementById("add-text-container-responsive")
         .classList.remove("expandable-container-active");
     }
   };

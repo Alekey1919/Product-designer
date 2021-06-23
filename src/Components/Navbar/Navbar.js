@@ -9,7 +9,7 @@ const Navbar = () => {
   return (
     <ReactBootStrap.Navbar id="navbar-container" expand="md">
       <ReactBootStrap.Container id="inner-container" fluid="true">
-        <ReactBootStrap.Navbar.Brand href="#home">
+        <ReactBootStrap.Navbar.Brand href="/">
           <img src={tiessLogo} alt="Tiess Logo" id="tiess-logo" />
         </ReactBootStrap.Navbar.Brand>
         <ReactBootStrap.Navbar.Toggle

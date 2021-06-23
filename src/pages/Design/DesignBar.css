@@ -269,6 +269,7 @@ input[type="color"]::-webkit-color-swatch {
   background-color: rgba(0, 0, 0, 0.6);
   align-items: center;
   backdrop-filter: blur(4px);
+  z-index: 50;
 }
 
 .overlay-container-active {
@@ -348,7 +349,7 @@ input[type="color"]::-webkit-color-swatch {
   }
 
   .button {
-    width: 100px;
+    width: 13%;
     height: 60px;
   }
 
@@ -359,17 +360,32 @@ input[type="color"]::-webkit-color-swatch {
   .front-btn-responsive,
   .back-btn-responsive {
     display: block;
-  }
-
-  .front-btn-responsive,
-  .back-btn-responsive {
-    width: 100px;
+    width: 13%;
     height: 60px;
     margin: auto;
   }
 
   .canvas-container {
-    margin-top: 10%;
+    /* margin-top: 11%; */
+    bottom: 60px;
+    margin: auto;
+    z-index: 1;
+  }
+
+  /* Overlay */
+
+  #save-form-container {
+    margin-top: 40%;
+    width: 350px;
+  }
+
+  #save-form-container label {
+    width: 70%;
+  }
+
+  .save-form-btn {
+    width: 100px;
+    height: 40px;
   }
 
   /* Pop ups */
@@ -383,10 +399,6 @@ input[type="color"]::-webkit-color-swatch {
     display: block;
     position: absolute;
     top: 15px;
-  }
-
-  .canvas-container {
-    z-index: 1;
   }
 
   .bar-container {
@@ -403,9 +415,10 @@ input[type="color"]::-webkit-color-swatch {
 
   #add-text-container-responsive {
     position: absolute;
+    width: 500px;
     bottom: 98px;
-    left: 100px;
-    right: 100px;
+    left: 0;
+    right: 0;
     margin: auto;
     background-color: rgba(32, 28, 44, 0.92);
     backdrop-filter: blur(4px);
@@ -416,9 +429,10 @@ input[type="color"]::-webkit-color-swatch {
 
   #upload-image-container-responsive {
     position: absolute;
+    width: 250px;
     bottom: 98px;
-    left: 250px;
-    right: 250px;
+    left: 0;
+    right: 0;
     margin: auto;
     background-color: rgba(32, 28, 44, 0.98);
     backdrop-filter: blur(4px);
@@ -433,9 +447,10 @@ input[type="color"]::-webkit-color-swatch {
 
   #save-container-responsive {
     position: absolute;
+    width: 250px;
     bottom: 98px;
-    left: 250px;
-    right: 250px;
+    left: 0;
+    right: 0;
     margin: auto;
     background-color: rgba(32, 28, 44, 0.98);
     backdrop-filter: blur(4px);
