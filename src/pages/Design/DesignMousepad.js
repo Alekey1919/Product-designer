@@ -38,6 +38,14 @@ function DesignMousepad() {
           canvas.backgroundImage.scaleToWidth(450);
           canvas.backgroundImage.scaleToHeight(404);
           canvas.renderAll();
+
+          if (
+            document.querySelector("#color-container").classList.length <= 2
+          ) {
+            document
+              .querySelector("#color-container")
+              .classList.remove("color-container-active");
+          }
         }
       }
     } else {
@@ -49,6 +57,37 @@ function DesignMousepad() {
         canvas.backgroundImage.scaleToWidth(504);
         canvas.backgroundImage.scaleToHeight(452);
         canvas.renderAll();
+
+        document
+          .querySelector("#color-container")
+          .classList.remove("color-container-responsive");
+        document
+          .querySelector(".btn-choose-color")
+          .classList.remove("btn-choose-color-responsive");
+        document
+          .querySelector(".btn-add-text")
+          .classList.remove("display-none");
+        document
+          .querySelector(".btn-add-image")
+          .classList.remove("display-none");
+        document
+          .querySelector(".front-btn-responsive")
+          .classList.remove("display-none");
+        document
+          .querySelector(".back-btn-responsive")
+          .classList.remove("display-none");
+        document
+          .querySelector(".save-btn-container")
+          .classList.remove("display-none");
+        document
+          .getElementById("upload-image-container-responsive")
+          .classList.remove("expandable-container-active");
+        document
+          .getElementById("save-container-responsive")
+          .classList.remove("expandable-container-active");
+        document
+          .getElementById("add-text-container-responsive")
+          .classList.remove("expandable-container-active");
       }
     }
     setScreenWidth(window.screen.width);
@@ -111,16 +150,40 @@ function DesignMousepad() {
   // Sidebar functions
 
   const openAddImage = () => {
-    document
-      .querySelector("#upload-image-container")
-      .classList.toggle("expandable-container-active");
+    if (window.screen.width > 999) {
+      document
+        .querySelector("#upload-image-container")
+        .classList.toggle("expandable-container-active");
+    } else {
+      document
+        .querySelector("#upload-image-container-responsive")
+        .classList.toggle("expandable-container-active");
+      document
+        .getElementById("add-text-container-responsive")
+        .classList.remove("expandable-container-active");
+      document
+        .getElementById("save-container-responsive")
+        .classList.remove("expandable-container-active");
+    }
     deleteHandler();
   };
 
   const openAddText = () => {
-    document
-      .querySelector("#add-text-container")
-      .classList.toggle("expandable-container-active");
+    if (window.screen.width > 999) {
+      document
+        .querySelector("#add-text-container")
+        .classList.toggle("expandable-container-active");
+    } else {
+      document
+        .querySelector("#add-text-container-responsive")
+        .classList.toggle("expandable-container-active");
+      document
+        .getElementById("upload-image-container-responsive")
+        .classList.remove("expandable-container-active");
+      document
+        .getElementById("save-container-responsive")
+        .classList.remove("expandable-container-active");
+    }
     deleteHandler();
   };
 

@@ -2,8 +2,8 @@ import React from "react";
 import CustomDesign from "./CustomDesign";
 // import firebase from "firebase/firebase";
 import fire from "../../Firebase.js";
-import { useState } from "react";
-import { act } from "react-dom/cjs/react-dom-test-utils.production.min";
+// import { useState } from "react";
+// import { act } from "react-dom/cjs/react-dom-test-utils.production.min";
 
 function DesignsList(props) {
   const deleteDesign = (id, name, design) => {

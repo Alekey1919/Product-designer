@@ -13,6 +13,7 @@
     "downloadjs": "^1.4.7",
     "fabric": "^4.5.0",
     "firebase": "^8.6.7",
+    "firebase-admin": "^9.11.0",
     "jquery": "^3.5.1",
     "node-sass": "^6.0.0",
     "react": "^17.0.1",

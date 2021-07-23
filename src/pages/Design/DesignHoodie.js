@@ -45,6 +45,14 @@ function DesignHoodie() {
           });
           canvas1.backgroundImage.scaleToWidth(430);
           canvas1.renderAll();
+
+          if (
+            document.querySelector("#color-container").classList.length <= 2
+          ) {
+            document
+              .querySelector("#color-container")
+              .classList.remove("color-container-active");
+          }
         }
       }
     } else {
@@ -61,6 +69,37 @@ function DesignHoodie() {
         });
         canvas1.backgroundImage.scaleToWidth(600);
         canvas1.renderAll();
+
+        document
+          .querySelector("#color-container")
+          .classList.remove("color-container-responsive");
+        document
+          .querySelector(".btn-choose-color")
+          .classList.remove("btn-choose-color-responsive");
+        document
+          .querySelector(".btn-add-text")
+          .classList.remove("display-none");
+        document
+          .querySelector(".btn-add-image")
+          .classList.remove("display-none");
+        document
+          .querySelector(".front-btn-responsive")
+          .classList.remove("display-none");
+        document
+          .querySelector(".back-btn-responsive")
+          .classList.remove("display-none");
+        document
+          .querySelector(".save-btn-container")
+          .classList.remove("display-none");
+        document
+          .getElementById("upload-image-container-responsive")
+          .classList.remove("expandable-container-active");
+        document
+          .getElementById("save-container-responsive")
+          .classList.remove("expandable-container-active");
+        document
+          .getElementById("add-text-container-responsive")
+          .classList.remove("expandable-container-active");
       }
     }
     setScreenWidth(window.screen.width);
