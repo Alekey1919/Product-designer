@@ -1,6 +1,7 @@
 import React from "react";
 import "./Navbar.css";
 import tiessLogo from "../../images/TiessLogo.png";
+import tiessLogoW from "../../images/webp/TiessLogo.webp";
 import "bootstrap/dist/css/bootstrap.min.css";
 import * as ReactBootStrap from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -10,7 +11,7 @@ const Navbar = () => {
     <ReactBootStrap.Navbar id="navbar-container" expand="md">
       <ReactBootStrap.Container id="inner-container" fluid="true">
         <ReactBootStrap.Navbar.Brand href="/">
-          <img src={tiessLogo} alt="Tiess Logo" id="tiess-logo" />
+          <img src={tiessLogoW} alt="Tiess Logo" id="tiess-logo" />
         </ReactBootStrap.Navbar.Brand>
         <ReactBootStrap.Navbar.Toggle
           aria-controls="basic-navbar-nav"

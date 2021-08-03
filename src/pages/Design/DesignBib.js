@@ -5,8 +5,8 @@ import { useState, useEffect } from "react";
 import "./DesignProducts.css";
 import { useHistory } from "react-router-dom";
 
-import Bib from "../../images/Bib.png";
-import BibResponsive from "../../images/Bib-responsive.png";
+import Bib from "../../images/webp/Bib.webp";
+import BibResponsive from "../../images/webp/Bib-responsive.webp";
 
 function DesignBib() {
   const [canvas, setCanvas] = useState("");

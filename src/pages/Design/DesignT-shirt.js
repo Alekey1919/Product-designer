@@ -5,18 +5,18 @@ import { useState, useEffect } from "react";
 import "./DesignProducts.css";
 import { useHistory } from "react-router-dom";
 
-import WhiteTshirt from "../../images/White-t-shirt.png";
-import WhiteTshirtResponsive from "../../images/White-t-shirt-responsive.png";
-import WhiteTshirtBack from "../../images/White-t-shirt-back.png";
-import WhiteTshirtBackResponsive from "../../images/White-t-shirt-back-responsive.png";
-import BlackTshirt from "../../images/Black-t-shirt.png";
-import BlackTshirtBack from "../../images/Black-t-shirt-back.png";
-import YellowTshirt from "../../images/Yellow-t-shirt.png";
-import YellowTshirtBack from "../../images/Yellow-t-shirt-back.png";
-import BlueTshirt from "../../images/Blue-t-shirt.png";
-import BlueTshirtBack from "../../images/Blue-t-shirt-back.png";
-import RedTshirt from "../../images/Red-t-shirt.png";
-import RedTshirtBack from "../../images/Red-t-shirt-back.png";
+import WhiteTshirt from "../../images/webp/White-t-shirt.webp";
+import WhiteTshirtResponsive from "../../images/webp/White-t-shirt-responsive.webp";
+import WhiteTshirtBack from "../../images/webp/White-t-shirt-back.webp";
+import WhiteTshirtBackResponsive from "../../images/webp/White-t-shirt-back-responsive.webp";
+import BlackTshirt from "../../images/webp/Black-t-shirt.webp";
+import BlackTshirtBack from "../../images/webp/Black-t-shirt-back.webp";
+import YellowTshirt from "../../images/webp/Yellow-t-shirt.webp";
+import YellowTshirtBack from "../../images/webp/Yellow-t-shirt-back.webp";
+import BlueTshirt from "../../images/webp/Blue-t-shirt.webp";
+import BlueTshirtBack from "../../images/webp/Blue-t-shirt-back.webp";
+import RedTshirt from "../../images/webp/Red-t-shirt.webp";
+import RedTshirtBack from "../../images/webp/Red-t-shirt-back.webp";
 
 function DesignTShirt() {
   const [canvas, setCanvas] = useState("");

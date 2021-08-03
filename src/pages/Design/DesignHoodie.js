@@ -5,18 +5,18 @@ import { useState, useEffect } from "react";
 import "./DesignProducts.css";
 import { useHistory } from "react-router-dom";
 
-import WhiteHoodie from "../../images/White-hoodie.png";
-import WhiteHoodieResponsive from "../../images/White-hoodie-responsive.png";
-import WhiteHoodieBack from "../../images/White-hoodie-back.png";
-import WhiteHoodieBackResponsive from "../../images/White-hoodie-back-responsive.png";
-import BlackHoodie from "../../images/Black-hoodie.png";
-import BlackHoodieBack from "../../images/Black-hoodie-back.png";
-import YellowHoodie from "../../images/Yellow-hoodie.png";
-import YellowHoodieBack from "../../images/Yellow-hoodie-back.png";
-import BlueHoodie from "../../images/Blue-hoodie.png";
-import BlueHoodieBack from "../../images/Blue-hoodie-back.png";
-import RedHoodie from "../../images/Red-hoodie.png";
-import RedHoodieBack from "../../images/Red-hoodie-back.png";
+import WhiteHoodie from "../../images/webp/White-hoodie.webp";
+import WhiteHoodieResponsive from "../../images/webp/White-hoodie-responsive.webp";
+import WhiteHoodieBack from "../../images/webp/White-hoodie-back.webp";
+import WhiteHoodieBackResponsive from "../../images/webp/White-hoodie-back-responsive.webp";
+import BlackHoodie from "../../images/webp/Black-hoodie.webp";
+import BlackHoodieBack from "../../images/webp/Black-hoodie-back.webp";
+import YellowHoodie from "../../images/webp/Yellow-hoodie.webp";
+import YellowHoodieBack from "../../images/webp/Yellow-hoodie-back.webp";
+import BlueHoodie from "../../images/webp/Blue-hoodie.webp";
+import BlueHoodieBack from "../../images/webp/Blue-hoodie-back.webp";
+import RedHoodie from "../../images/webp/Red-hoodie.webp";
+import RedHoodieBack from "../../images/webp/Red-hoodie-back.webp";
 
 function DesignHoodie() {
   const [canvas, setCanvas] = useState("");

@@ -5,9 +5,9 @@ import { useState, useEffect } from "react";
 import "./DesignProducts.css";
 import { useHistory } from "react-router-dom";
 
-import WhiteCushion from "../../images/White-cushion.png";
-import WhiteCushionResponsive from "../../images/White-cushion-responsive.png";
-import BlackCushion from "../../images/Black-cushion.png";
+import WhiteCushion from "../../images/webp/White-cushion.webp";
+import WhiteCushionResponsive from "../../images/webp/White-cushion-responsive.webp";
+import BlackCushion from "../../images/webp/Black-cushion.webp";
 
 function DesignCushion() {
   const [canvas, setCanvas] = useState("");

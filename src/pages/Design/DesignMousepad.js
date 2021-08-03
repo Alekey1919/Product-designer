@@ -5,9 +5,9 @@ import { useState, useEffect } from "react";
 import "./DesignProducts.css";
 import { useHistory } from "react-router-dom";
 
-import WhiteMousepad from "../../images/White-mousepad.png";
-import WhiteMousepadResponsive from "../../images/White-mousepad-responsive.png";
-import BlackMousepad from "../../images/Black-mousepad.png";
+import WhiteMousepad from "../../images/webp/White-mousepad.webp";
+import WhiteMousepadResponsive from "../../images/webp/White-mousepad-responsive.webp";
+import BlackMousepad from "../../images/webp/Black-mousepad.webp";
 
 function DesignMousepad() {
   const [canvas, setCanvas] = useState("");

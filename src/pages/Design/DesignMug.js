@@ -5,8 +5,8 @@ import { useState, useEffect } from "react";
 import "./DesignProducts.css";
 import { useHistory } from "react-router-dom";
 
-import Mug from "../../images/Mug.png";
-import MugResponsive from "../../images/Mug-responsive.png";
+import Mug from "../../images/webp/Mug.webp";
+import MugResponsive from "../../images/webp/Mug-responsive.webp";
 
 function DesignMug() {
   const [canvas, setCanvas] = useState("");

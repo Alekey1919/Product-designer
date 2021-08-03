@@ -1,14 +1,20 @@
 import React from "react";
 import "./Home.css";
 import Product from "../../Components/Products/Product";
-import barbijo from "../../images/Barbijo.png";
 import Overlay from "../../Components/Products/Overlay";
 import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Card, Button } from "react-bootstrap";
-import mousepad from "../../images/Mousepad.png";
 import { Link } from "react-router-dom";
-import Tshirt from "../../images/T-shirt.png";
+import Tshirt from "../../images/webp/T-shirt.webp";
+import Mug from "../../images/general/mug.webp";
+import Agenda from "../../images/general/agenda.webp";
+import Barbijo from "../../images/webp/Barbijo.webp";
+import Flask from "../../images/general/flask.webp";
+import Mousepad from "../../images/webp/Mousepad.webp";
+import Sizes from "../../images/general/sizes.webp";
+import Design from "../../images/general/create-design.webp";
+import Faq from "../../images/general/faq.webp";
 
 function Home() {
   useEffect(() => {
@@ -46,59 +52,47 @@ function Home() {
           </div>
           <div className="col mt-5">
             <Product
-              src="https://www.brildor.com/blog/wp-content/uploads/2019/11/como-sublimar-tazas-1-e1574069564818.png"
+              src={Mug}
               alt="Mug"
               title="Mug"
               price="333"
-              onClick={() =>
-                openOverlay(
-                  "https://www.brildor.com/blog/wp-content/uploads/2019/11/como-sublimar-tazas-1-e1574069564818.png"
-                )
-              }
+              onClick={() => openOverlay(Mug)}
             />
           </div>
           <div className="col mt-5">
             <Product
-              src="https://www.maravillosaserendipia.com.ar/wp-content/uploads/2018/08/so%C3%B1arlohacerlofrente.png"
+              src={Agenda}
               alt="Agenda"
               title="Agenda"
               price="404"
-              onClick={() =>
-                openOverlay(
-                  "https://www.maravillosaserendipia.com.ar/wp-content/uploads/2018/08/so%C3%B1arlohacerlofrente.png"
-                )
-              }
+              onClick={() => openOverlay(Agenda)}
             />
           </div>
           <div className="col mt-5">
             <Product
-              src={barbijo}
+              src={Barbijo}
               alt="Mask"
               title="Mask"
               price="123"
-              onClick={() => openOverlay(barbijo)}
+              onClick={() => openOverlay(Barbijo)}
             />
           </div>
           <div className="col mt-5">
             <Product
-              src="https://colormake.com/wp-content/uploads/2013/03/botella-de-aluminio-600-1-1.png"
+              src={Flask}
               alt="Flask"
               title="Flask"
               price="999"
-              onClick={() =>
-                openOverlay(
-                  "https://colormake.com/wp-content/uploads/2013/03/botella-de-aluminio-600-1-1.png"
-                )
-              }
+              onClick={() => openOverlay(Flask)}
             />
           </div>
           <div className="col my-5 ">
             <Product
-              src={mousepad}
+              src={Mousepad}
               alt="Mousepad"
               title="Mousepad"
               price="502"
-              onClick={() => openOverlay(mousepad)}
+              onClick={() => openOverlay(Mousepad)}
             />
           </div>
         </div>
@@ -114,11 +108,7 @@ function Home() {
           <div className="col d-flex mb-5 justify-content-center">
             <Card style={{ width: "18rem" }}>
               <div className="img-container">
-                <Card.Img
-                  variant="top"
-                  src="https://ecofilmfest.my/shop/wp-content/uploads/2017/10/tshirt-size-guide.jpg"
-                  className="card-img"
-                />
+                <Card.Img variant="top" src={Sizes} className="card-img" />
               </div>
               <Card.Body>
                 <Card.Title className="text-center">
@@ -136,11 +126,7 @@ function Home() {
           <div className="col d-flex mb-5 justify-content-center">
             <Card style={{ width: "18rem" }}>
               <div className="img-container">
-                <Card.Img
-                  variant="top"
-                  src="https://environment-review.yale.edu/sites/default/files/styles/flexslider_full/public/clothing-design-yer-sq.jpg?itok=uADvHc3l"
-                  className="card-img"
-                />
+                <Card.Img variant="top" src={Design} className="card-img" />
               </div>
               <Card.Body>
                 <Card.Title>Create your own designs</Card.Title>
@@ -158,11 +144,7 @@ function Home() {
           <div className="col d-flex mb-5 justify-content-center">
             <Card style={{ width: "18rem" }}>
               <div className="img-container">
-                <Card.Img
-                  variant="top"
-                  src="https://www.seekpng.com/png/detail/119-1192175_faq-faq-png-pink.png"
-                  className="card-img"
-                />
+                <Card.Img variant="top" src={Faq} className="card-img" />
               </div>
               <Card.Body>
                 <Card.Title>FAQ</Card.Title>
