@@ -31,7 +31,7 @@ function CustomDesign(props) {
             </Carousel>
             <h1 id="name">{props.name}</h1>
             <button onClick={props.delete} id="delete-btn">
-              <i class="far fa-times-circle"></i>
+              <i className="far fa-times-circle"></i>
             </button>
           </div>
         </div>
@@ -47,7 +47,7 @@ function CustomDesign(props) {
             />
             <h1 id="name-single">{props.name}</h1>
             <button onClick={props.delete} id="delete-btn-single">
-              <i class="far fa-times-circle"></i>
+              <i className="far fa-times-circle"></i>
             </button>
           </div>
         </div>

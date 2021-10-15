@@ -7,8 +7,10 @@ import { useHistory } from "react-router-dom";
 
 import WhiteHoodie from "../../images/webp/White-hoodie.webp";
 import WhiteHoodieResponsive from "../../images/webp/White-hoodie-responsive.webp";
+import WhiteHoodieResponsive360 from "../../images/webp/White-hoodie-responsive-360.webp";
 import WhiteHoodieBack from "../../images/webp/White-hoodie-back.webp";
 import WhiteHoodieBackResponsive from "../../images/webp/White-hoodie-back-responsive.webp";
+import WhiteHoodieBackResponsive360 from "../../images/webp/White-hoodie-back-responsive-360.webp";
 import BlackHoodie from "../../images/webp/Black-hoodie.webp";
 import BlackHoodieBack from "../../images/webp/Black-hoodie-back.webp";
 import YellowHoodie from "../../images/webp/Yellow-hoodie.webp";
@@ -17,8 +19,21 @@ import BlueHoodie from "../../images/webp/Blue-hoodie.webp";
 import BlueHoodieBack from "../../images/webp/Blue-hoodie-back.webp";
 import RedHoodie from "../../images/webp/Red-hoodie.webp";
 import RedHoodieBack from "../../images/webp/Red-hoodie-back.webp";
+import { db, auth } from "../../Firebase";
 
 function DesignHoodie() {
+  // User
+
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        setUser(user);
+      }
+    });
+  });
+
   const [canvas, setCanvas] = useState("");
   const [canvas1, setCanvas1] = useState("");
   const [screenWidth, setScreenWidth] = useState(window.screen.width);
@@ -28,8 +43,8 @@ function DesignHoodie() {
 
   // Resize listener
 
-  window.addEventListener("resize", () => {
-    if (screenWidth <= 999) {
+  const resize = () => {
+    if (screenWidth <= 999 && screenWidth >= 450) {
       if (canvas.width >= 600) {
         if (canvas.setDimensions) {
           //If the original width res is less than 999 setDimensions is not a function
@@ -54,6 +69,21 @@ function DesignHoodie() {
               .classList.remove("color-container-active");
           }
         }
+      }
+    } else if (screenWidth < 450) {
+      if (canvas.width >= 430) {
+        canvas.setDimensions({
+          width: screenWidth,
+          height: screenWidth * 1.4,
+        });
+        canvas.backgroundImage.scaleToWidth(screenWidth);
+        canvas.renderAll();
+        canvas1.setDimensions({
+          width: screenWidth,
+          height: screenWidth * 1.4,
+        });
+        canvas1.backgroundImage.scaleToWidth(screenWidth);
+        canvas1.renderAll();
       }
     } else {
       if (canvas.width <= 430) {
@@ -103,7 +133,9 @@ function DesignHoodie() {
       }
     }
     setScreenWidth(window.screen.width);
-  });
+  };
+
+  window.addEventListener("resize", resize);
 
   //Canvas initialization
 
@@ -116,12 +148,20 @@ function DesignHoodie() {
           backgroundImage: WhiteHoodie,
         })
       );
-    } else {
+    } else if (screenWidth < 360 && screenWidth > 999) {
       setCanvas(
         new fabric.Canvas("canvas", {
           height: 500,
           width: 430,
           backgroundImage: WhiteHoodieResponsive,
+        })
+      );
+    } else {
+      setCanvas(
+        new fabric.Canvas("canvas", {
+          height: 420,
+          width: 360,
+          backgroundImage: WhiteHoodieResponsive360,
         })
       );
     }
@@ -136,12 +176,20 @@ function DesignHoodie() {
           backgroundImage: WhiteHoodieBack,
         })
       );
-    } else {
+    } else if (screenWidth < 360 && screenWidth > 999) {
       setCanvas1(
         new fabric.Canvas("canvas1", {
           height: 500,
           width: 430,
           backgroundImage: WhiteHoodieBackResponsive,
+        })
+      );
+    } else {
+      setCanvas1(
+        new fabric.Canvas("canvas1", {
+          height: 420,
+          width: 360,
+          backgroundImage: WhiteHoodieBackResponsive360,
         })
       );
     }
@@ -837,22 +885,19 @@ function DesignHoodie() {
     let product = "Hoodie";
     let url = canvas.toDataURL();
     let url1 = canvas1.toDataURL();
+    let id = name + product;
     let productData = {
       name: name,
       product: product,
       src0: url,
       src1: url1,
+      id: id,
     };
-    fetch("https://tiess-test-default-rtdb.firebaseio.com/my-designs.json", {
-      method: "POST",
-      body: JSON.stringify(productData),
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "http://localhost:3000",
-      },
-    }).then(() => {
-      history.replace("/my-designs");
-    });
+    db.collection(user.email)
+      .doc()
+      .set(productData)
+      .then((res) => history.replace("/my-designs"))
+      .catch((err) => console.warn(err.message));
   };
 
   return (

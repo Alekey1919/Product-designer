@@ -25,3 +25,19 @@ body {
   margin: auto;
   padding: 0;
 }
+
+.no-user-container {
+  width: 100vw;
+  height: calc(100vh - 76px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.no-user-container > h1 {
+  text-align: center;
+}
+
+.no-desings {
+  text-align: center;
+}

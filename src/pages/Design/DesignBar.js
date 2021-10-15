@@ -1,7 +1,18 @@
 import "./DesignBar.css";
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { auth } from "../../Firebase";
 
 function DesignBar(props) {
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        setUser(user);
+      }
+    });
+  });
+
   // Sidebar functions
 
   const openSave = () => {
@@ -67,9 +78,13 @@ function DesignBar(props) {
   };
 
   const openOverlay = () => {
-    document
-      .querySelector(".overlay-container")
-      .classList.toggle("overlay-container-active");
+    if (user) {
+      document
+        .querySelector(".overlay-container")
+        .classList.toggle("overlay-container-active");
+    } else {
+      alert("You must be logged in");
+    }
   };
 
   useEffect(() => {
@@ -359,7 +374,7 @@ function DesignBar(props) {
 
       <div className="overlay-container">
         <div id="save-form-container">
-          <i class="fas fa-times" onClick={openOverlay}></i>
+          <i className="fas fa-times" onClick={openOverlay}></i>
           <form onSubmit={props.submitHandler}>
             <h1>Save design</h1>
             <label>
@@ -372,7 +387,7 @@ function DesignBar(props) {
                 maxLength="40"
               ></input>
             </label>
-            <button class="button save-form-btn">Save</button>
+            <button className="button save-form-btn">Save</button>
           </form>
         </div>
       </div>

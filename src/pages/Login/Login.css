@@ -1,0 +1,127 @@
+.login-page-container {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.login-container {
+  width: 400px;
+  height: 600px;
+  margin: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-logo {
+  height: 100px;
+  left: 0;
+  right: 0;
+  top: -150px;
+  display: flex;
+  justify-content: center;
+}
+
+.login-logo-img {
+  width: 90px;
+}
+
+.form-container {
+  margin-top: 50px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 400px;
+  height: 400px;
+  margin: auto;
+  border: 1px solid black;
+  background: #201c2c;
+}
+
+form > div {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.login-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-input {
+  background: none;
+  border: none;
+  border-bottom: 1px solid #f93c64;
+  height: 50px;
+  color: #fa708e;
+}
+
+.login-input:focus {
+  outline: none;
+}
+
+.login-button {
+  background: none;
+  color: #f93c64;
+  border: none;
+  text-decoration: underline;
+  transition: transform 0.1s;
+  margin-top: 10px;
+}
+
+.login-button:hover {
+  color: #fa708e;
+  transform: scale(1.05);
+}
+
+.login-label {
+  color: #f93c64;
+}
+
+.crear-cuenta-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.form-recovery {
+  display: flex;
+  flex-direction: column;
+  justify-content: center !important;
+  color: black;
+  width: 400px;
+  height: 400px;
+  margin: auto;
+  border: 1px solid black;
+  background: #201c2c;
+  position: relative;
+}
+
+.form-recovery > div {
+  margin: 30px 0;
+}
+
+.form-recovery > button {
+  width: 100% !important;
+}
+
+.recovery-back {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #f93c64;
+}
+
+@media (max-width: 420px) {
+  form {
+    width: 96% !important;
+    height: 400px !important;
+  }
+}

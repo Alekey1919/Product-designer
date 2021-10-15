@@ -287,10 +287,10 @@ input[type="color"]::-webkit-color-swatch {
 
 #save-form-container {
   margin: auto;
-  margin-top: 17%;
+  margin-top: 15%;
   width: 500px;
   height: 230px;
-  background-color: #201c2c;
+  /* background-color: #201c2c; */
 }
 
 #save-form-container h1 {
@@ -341,7 +341,12 @@ input[type="color"]::-webkit-color-swatch {
     width: 100vw;
     bottom: 0%;
     display: flex;
-    justify-content: space-around;
+    overflow-y: hidden;
+    overflow-x: scroll;
+  }
+
+  .bar-container::-webkit-scrollbar {
+    height: 2px;
   }
 
   .bar-container h1 {
@@ -349,8 +354,11 @@ input[type="color"]::-webkit-color-swatch {
   }
 
   .button {
-    width: 13%;
     height: 60px;
+    min-width: 100px !important;
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+    margin: auto;
   }
 
   .front-back-container {
@@ -360,9 +368,9 @@ input[type="color"]::-webkit-color-swatch {
   .front-btn-responsive,
   .back-btn-responsive {
     display: block;
-    width: 13%;
+    min-width: 100px;
     height: 60px;
-    margin: auto;
+    margin: auto 10px;
   }
 
   .canvas-container {
@@ -392,6 +400,9 @@ input[type="color"]::-webkit-color-swatch {
 
   .btn-choose-color-responsive {
     position: absolute;
+    width: 100px;
+    top: 0;
+    bottom: 0%;
     left: 3%;
   }
 
@@ -399,6 +410,8 @@ input[type="color"]::-webkit-color-swatch {
     display: block;
     position: absolute;
     top: 15px;
+    width: 100%;
+    left: 130px;
   }
 
   .bar-container {
@@ -460,4 +473,20 @@ input[type="color"]::-webkit-color-swatch {
 
 .display-none {
   display: none;
+}
+
+@media (max-width: 520px) {
+  #add-text-container-responsive {
+    width: 98%;
+    bottom: 100px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: rgba(32, 28, 44, 0.92);
+    backdrop-filter: blur(4px);
+    z-index: 5;
+  }
+
+  .button.add {
+  }
 }

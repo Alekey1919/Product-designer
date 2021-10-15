@@ -1,6 +1,5 @@
-#tiess-logo {
-  /* display: block; */
-  width: 120px;
+#logo {
+  width: 50px;
   margin-left: 15px;
 }
 
@@ -18,7 +17,6 @@
 }
 
 #link-home,
-#link-products,
 #link-design,
 #link-my-designs,
 #link-about {
@@ -34,20 +32,62 @@
 
 .navlink {
   color: #fff;
-  padding-left: 20px;
+  padding: 0 15px;
 }
 
 .navlink:hover {
   color: #f93c64;
 }
 
-@media (max-width: 766px) {
+#collapser {
+  display: flex;
+  align-items: center;
+}
+
+.login {
+  position: absolute;
+  right: 20px;
+}
+
+.navlink.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding: 0;
+}
+
+.login-logout > p {
+  margin: 5px;
+  padding: 2px 5px;
+}
+
+.login-logout > p > small {
+  color: #fa708e;
+}
+
+.user-name {
+  padding-left: 5px;
+}
+
+@media (max-width: 767px) {
   #inner-container {
     display: block;
   }
   #collapser {
     margin: 15px 0 0 15px;
+    align-items: flex-start;
+  }
+
+  .login {
+    position: relative;
+    right: unset;
+  }
+
+  .navlink {
+    padding: 10px;
   }
   #navbar-container {
+    z-index: 100;
   }
 }

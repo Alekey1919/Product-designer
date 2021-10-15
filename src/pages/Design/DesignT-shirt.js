@@ -7,8 +7,10 @@ import { useHistory } from "react-router-dom";
 
 import WhiteTshirt from "../../images/webp/White-t-shirt.webp";
 import WhiteTshirtResponsive from "../../images/webp/White-t-shirt-responsive.webp";
+import WhiteTshirtResponsive360 from "../../images/webp/White-t-shirt-responsive-360.webp";
 import WhiteTshirtBack from "../../images/webp/White-t-shirt-back.webp";
 import WhiteTshirtBackResponsive from "../../images/webp/White-t-shirt-back-responsive.webp";
+import WhiteTshirtBackResponsive360 from "../../images/webp/White-t-shirt-back-responsive-360.webp";
 import BlackTshirt from "../../images/webp/Black-t-shirt.webp";
 import BlackTshirtBack from "../../images/webp/Black-t-shirt-back.webp";
 import YellowTshirt from "../../images/webp/Yellow-t-shirt.webp";
@@ -17,8 +19,21 @@ import BlueTshirt from "../../images/webp/Blue-t-shirt.webp";
 import BlueTshirtBack from "../../images/webp/Blue-t-shirt-back.webp";
 import RedTshirt from "../../images/webp/Red-t-shirt.webp";
 import RedTshirtBack from "../../images/webp/Red-t-shirt-back.webp";
+import { db, auth } from "../../Firebase";
 
 function DesignTShirt() {
+  // User
+
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        setUser(user);
+      }
+    });
+  });
+
   const [canvas, setCanvas] = useState("");
   const [canvas1, setCanvas1] = useState("");
   const [screenWidth, setScreenWidth] = useState(window.screen.width);
@@ -28,7 +43,7 @@ function DesignTShirt() {
 
   // Resize listener
 
-  window.addEventListener("resize", () => {
+  const resize = () => {
     setScreenWidth(window.screen.width);
     if (screenWidth <= 999) {
       if (canvas.width >= 600) {
@@ -103,7 +118,9 @@ function DesignTShirt() {
           .classList.remove("expandable-container-active");
       }
     }
-  });
+  };
+
+  window.addEventListener("resize", resize);
 
   //Canvas initialization
 
@@ -116,12 +133,20 @@ function DesignTShirt() {
           backgroundImage: WhiteTshirt,
         })
       );
-    } else {
+    } else if (screenWidth < 360 && screenWidth > 999) {
       setCanvas(
         new fabric.Canvas("canvas", {
           height: 500,
           width: 430,
           backgroundImage: WhiteTshirtResponsive,
+        })
+      );
+    } else {
+      setCanvas(
+        new fabric.Canvas("canvas", {
+          height: 420,
+          width: 360,
+          backgroundImage: WhiteTshirtResponsive360,
         })
       );
     }
@@ -136,12 +161,20 @@ function DesignTShirt() {
           backgroundImage: WhiteTshirtBack,
         })
       );
-    } else {
+    } else if (screenWidth < 360 && screenWidth > 999) {
       setCanvas1(
         new fabric.Canvas("canvas1", {
           height: 500,
           width: 430,
           backgroundImage: WhiteTshirtBackResponsive,
+        })
+      );
+    } else {
+      setCanvas1(
+        new fabric.Canvas("canvas1", {
+          height: 420,
+          width: 360,
+          backgroundImage: WhiteTshirtBackResponsive360,
         })
       );
     }
@@ -818,22 +851,19 @@ function DesignTShirt() {
     let product = "T-shirt";
     let url = canvas.toDataURL();
     let url1 = canvas1.toDataURL();
+    let id = name + product;
     let productData = {
       name: name,
       product: product,
       src0: url,
       src1: url1,
+      id: id,
     };
-    fetch("https://tiess-test-default-rtdb.firebaseio.com/my-designs.json", {
-      method: "POST",
-      body: JSON.stringify(productData),
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "http://localhost:3000",
-      },
-    }).then(() => {
-      history.replace("/my-designs");
-    });
+    db.collection(user.email)
+      .doc()
+      .set(productData)
+      .then((res) => history.replace("/my-designs"))
+      .catch((err) => console.warn(err.message));
   };
 
   return (

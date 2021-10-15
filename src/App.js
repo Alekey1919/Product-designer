@@ -21,10 +21,11 @@ import DesignCushion from "./pages/Design/DesignCushion";
 import DesignMug from "./pages/Design/DesignMug";
 import DesignBib from "./pages/Design/DesignBib";
 import DesignMousepad from "./pages/Design/DesignMousepad";
+import Login from "./pages/Login/Login";
 
 const App = () => {
   return (
-    <Router basename="/Product-designer">
+    <Router basename="/">
       <ScrollToTop />
       <Navbar />
       <main>
@@ -67,6 +68,9 @@ const App = () => {
           </Route>
           <Route path="/about" exact>
             <About />
+          </Route>
+          <Route path="/login" exact>
+            <Login />
           </Route>
           <Redirect to="/" />
         </Switch>

@@ -1,22 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CustomDesign from "./CustomDesign";
-// import firebase from "firebase/firebase";
-import fire from "../../Firebase.js";
-// import { useState } from "react";
-// import { act } from "react-dom/cjs/react-dom-test-utils.production.min";
+import { db, auth } from "../../Firebase";
 
 function DesignsList(props) {
-  const deleteDesign = (id, name, design) => {
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        setUser(user);
+      }
+    });
+  }, []);
+
+  const deleteDesign = (id, name) => {
     if (window.confirm('Are you sure you want to delete "' + name + '"?')) {
-      fire
-        .database()
-        .ref("my-designs/" + id)
-        .remove()
-        .then(
+      db.collection(user.email)
+        .where("name", "==", name)
+        .get()
+        .then((querySnapshot) => {
+          querySnapshot.docs[0].ref.delete();
+        })
+        .then(() => {
           document
             .getElementById(id)
-            .parentNode.parentNode.classList.add("none")
-        );
+            .parentNode.parentNode.classList.add("none");
+        });
     }
   };
 

@@ -4,12 +4,26 @@ import { fabric } from "fabric";
 import { useState, useEffect } from "react";
 import "./DesignProducts.css";
 import { useHistory } from "react-router-dom";
+import { db, auth } from "../../Firebase";
 
 import WhiteMousepad from "../../images/webp/White-mousepad.webp";
 import WhiteMousepadResponsive from "../../images/webp/White-mousepad-responsive.webp";
+import WhiteMousepadResponsive360 from "../../images/webp/White-mousepad-responsive-360.webp";
 import BlackMousepad from "../../images/webp/Black-mousepad.webp";
 
 function DesignMousepad() {
+  // User
+
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        setUser(user);
+      }
+    });
+  });
+
   const [canvas, setCanvas] = useState("");
   const [screenWidth, setScreenWidth] = useState(window.screen.width);
   const canvasContainer = document.querySelector("#canvas-container");
@@ -26,7 +40,7 @@ function DesignMousepad() {
 
   // Resize listener
 
-  window.addEventListener("resize", () => {
+  const resize = () => {
     if (screenWidth <= 999) {
       if (canvas.width >= 504) {
         if (canvas.setDimensions) {
@@ -91,7 +105,9 @@ function DesignMousepad() {
       }
     }
     setScreenWidth(window.screen.width);
-  });
+  };
+
+  window.addEventListener("resize", resize);
 
   //Canvas initialization
 
@@ -104,12 +120,20 @@ function DesignMousepad() {
           backgroundImage: WhiteMousepad,
         })
       );
-    } else {
+    } else if (screenWidth < 360 && screenWidth > 999) {
       setCanvas(
         new fabric.Canvas("canvas", {
           width: 450,
           height: 404,
           backgroundImage: WhiteMousepadResponsive,
+        })
+      );
+    } else {
+      setCanvas(
+        new fabric.Canvas("canvas", {
+          width: 360,
+          height: 320,
+          backgroundImage: WhiteMousepadResponsive360,
         })
       );
     }
@@ -368,23 +392,20 @@ function DesignMousepad() {
   const submitHandler = (event) => {
     event.preventDefault();
     let name = document.querySelector("#name-input").value;
-    let product = "Cushion";
+    let product = "Mousepad";
     let url = canvas.toDataURL();
+    let id = name + product;
     let productData = {
       name: name,
       product: product,
       src0: url,
+      id: id,
     };
-    fetch("https://tiess-test-default-rtdb.firebaseio.com/my-designs.json", {
-      method: "POST",
-      body: JSON.stringify(productData),
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "http://localhost:3000",
-      },
-    }).then(() => {
-      history.replace("/my-designs");
-    });
+    db.collection(user.email)
+      .doc()
+      .set(productData)
+      .then((res) => history.replace("/my-designs"))
+      .catch((err) => console.warn(err.message));
   };
 
   return (
