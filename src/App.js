@@ -25,7 +25,7 @@ import Login from "./pages/Login/Login";
 
 const App = () => {
   return (
-    <Router basename="/">
+    <Router basename="/Product-designer">
       <ScrollToTop />
       <Navbar />
       <main>
