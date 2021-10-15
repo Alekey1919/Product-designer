@@ -120,7 +120,7 @@ function DesignMousepad() {
           backgroundImage: WhiteMousepad,
         })
       );
-    } else if (screenWidth < 360 && screenWidth > 999) {
+    } else if (screenWidth > 500 && screenWidth < 999) {
       setCanvas(
         new fabric.Canvas("canvas", {
           width: 450,

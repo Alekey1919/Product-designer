@@ -133,7 +133,7 @@ function DesignTShirt() {
           backgroundImage: WhiteTshirt,
         })
       );
-    } else if (screenWidth < 360 && screenWidth > 999) {
+    } else if (screenWidth > 430 && screenWidth < 999) {
       setCanvas(
         new fabric.Canvas("canvas", {
           height: 500,
@@ -161,7 +161,7 @@ function DesignTShirt() {
           backgroundImage: WhiteTshirtBack,
         })
       );
-    } else if (screenWidth < 360 && screenWidth > 999) {
+    } else if (screenWidth > 430 && screenWidth < 999) {
       setCanvas1(
         new fabric.Canvas("canvas1", {
           height: 500,

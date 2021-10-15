@@ -41,7 +41,7 @@ function DesignCushion() {
   // Resize listener
 
   const resize = () => {
-    if (screenWidth <= 999) {
+    if (screenWidth <= 1200) {
       if (canvas.width >= 600) {
         if (canvas.setDimensions) {
           //If the original width res is less than 999 setDimensions is not a function
@@ -110,7 +110,7 @@ function DesignCushion() {
   //Canvas initialization
 
   useEffect(() => {
-    if (screenWidth >= 999) {
+    if (screenWidth >= 1200) {
       setCanvas(
         new fabric.Canvas("canvas", {
           height: 600,
@@ -118,7 +118,7 @@ function DesignCushion() {
           backgroundImage: WhiteCushion,
         })
       );
-    } else if (screenWidth < 360 && screenWidth > 999) {
+    } else if (screenWidth < 360 && screenWidth > 1200) {
       setCanvas(
         new fabric.Canvas("canvas", {
           height: 462,

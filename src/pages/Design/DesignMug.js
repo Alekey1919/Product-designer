@@ -119,7 +119,7 @@ function DesignMug() {
           backgroundImage: Mug,
         })
       );
-    } else if (screenWidth < 360 && screenWidth > 999) {
+    } else if (screenWidth > 460 && screenWidth < 999) {
       setCanvas(
         new fabric.Canvas("canvas", {
           width: 430,

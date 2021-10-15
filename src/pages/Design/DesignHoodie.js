@@ -148,7 +148,7 @@ function DesignHoodie() {
           backgroundImage: WhiteHoodie,
         })
       );
-    } else if (screenWidth < 360 && screenWidth > 999) {
+    } else if (screenWidth > 450 && screenWidth < 999) {
       setCanvas(
         new fabric.Canvas("canvas", {
           height: 500,
@@ -176,7 +176,7 @@ function DesignHoodie() {
           backgroundImage: WhiteHoodieBack,
         })
       );
-    } else if (screenWidth < 360 && screenWidth > 999) {
+    } else if (screenWidth > 450 && screenWidth < 999) {
       setCanvas1(
         new fabric.Canvas("canvas1", {
           height: 500,
