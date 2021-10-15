@@ -119,7 +119,7 @@ function Login() {
     <div className="login-page-container">
       <div className="login-container">
         <div className="login-logo">
-          <Link to="/">
+          <Link to="/Product-designer">
             <img src={Logo} alt="Logo" className="login-logo-img" />
           </Link>
         </div>

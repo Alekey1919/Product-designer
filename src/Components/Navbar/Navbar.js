@@ -30,7 +30,7 @@ const Navbar = () => {
       {location.pathname === "/login" ? null : (
         <ReactBootStrap.Navbar id="navbar-container" expand="md">
           <ReactBootStrap.Container id="inner-container" fluid="true">
-            <ReactBootStrap.Navbar.Brand href="/">
+            <ReactBootStrap.Navbar.Brand href="/Product-designer">
               <img src={Logo} alt="Logo" id="logo" />
             </ReactBootStrap.Navbar.Brand>
             <ReactBootStrap.Navbar.Toggle
