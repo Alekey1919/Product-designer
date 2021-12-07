@@ -66,7 +66,7 @@ function MyDesigns() {
         <DesignList designs={loadedDesigns} />
 
         {loadedDesigns.length >= 1 ? null : (
-          <h1 className="no-desings">
+          <h1 className="no-designs">
             You don't have any desings. Click <Link to="/design">here</Link> to
             create some :)
           </h1>

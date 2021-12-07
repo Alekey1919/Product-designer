@@ -7,8 +7,8 @@ import Logo from "../../images/webp/product-designer-logo-black.webp";
 function Login() {
   const history = useHistory();
   const [values, setValues] = useState({
-    email: "",
-    password: "",
+    email: "guest@guest.com",
+    password: "123guest",
   });
   const [recovery, setRecovery] = useState(false);
 
