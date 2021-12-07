@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/Product-designer/static/css/main.45e081f2.chunk.css",
-    "main.js": "/Product-designer/static/js/main.f8308a00.chunk.js",
-    "main.js.map": "/Product-designer/static/js/main.f8308a00.chunk.js.map",
+    "main.css": "/Product-designer/static/css/main.72527b2a.chunk.css",
+    "main.js": "/Product-designer/static/js/main.e68a60fd.chunk.js",
+    "main.js.map": "/Product-designer/static/js/main.e68a60fd.chunk.js.map",
     "runtime-main.js": "/Product-designer/static/js/runtime-main.5b6206a8.js",
     "runtime-main.js.map": "/Product-designer/static/js/runtime-main.5b6206a8.js.map",
     "static/css/2.27dd871e.chunk.css": "/Product-designer/static/css/2.27dd871e.chunk.css",
@@ -10,7 +10,7 @@
     "static/js/2.8683575c.chunk.js.map": "/Product-designer/static/js/2.8683575c.chunk.js.map",
     "index.html": "/Product-designer/index.html",
     "static/css/2.27dd871e.chunk.css.map": "/Product-designer/static/css/2.27dd871e.chunk.css.map",
-    "static/css/main.45e081f2.chunk.css.map": "/Product-designer/static/css/main.45e081f2.chunk.css.map",
+    "static/css/main.72527b2a.chunk.css.map": "/Product-designer/static/css/main.72527b2a.chunk.css.map",
     "static/js/2.8683575c.chunk.js.LICENSE.txt": "/Product-designer/static/js/2.8683575c.chunk.js.LICENSE.txt",
     "static/media/Agenda1.12b8eb80.webp": "/Product-designer/static/media/Agenda1.12b8eb80.webp",
     "static/media/Barbijo.11bdba33.webp": "/Product-designer/static/media/Barbijo.11bdba33.webp",
@@ -88,7 +88,7 @@
     "static/js/runtime-main.5b6206a8.js",
     "static/css/2.27dd871e.chunk.css",
     "static/js/2.8683575c.chunk.js",
-    "static/css/main.45e081f2.chunk.css",
-    "static/js/main.f8308a00.chunk.js"
+    "static/css/main.72527b2a.chunk.css",
+    "static/js/main.e68a60fd.chunk.js"
   ]
 }
