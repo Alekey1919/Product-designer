@@ -2,7 +2,7 @@ import React from "react";
 import "./Home.css";
 import Product from "../../Components/Products/Product";
 import Overlay from "../../Components/Products/Overlay";
-import { useState, useEffect } from "react";
+import useHome from "./useHome";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -17,23 +17,7 @@ import Design from "../../images/general/create-design.webp";
 import Faq from "../../images/general/faq.webp";
 
 function Home() {
-  useEffect(() => {
-    document.body.style.overflow = "auto";
-  });
-
-  const [isOpen, setIsOpen] = useState(false);
-  const [overPath, setOverPath] = useState("");
-
-  function openOverlay(path) {
-    setIsOpen(true);
-    document.body.classList.toggle("overflow-hidden");
-    setOverPath(path);
-  }
-
-  function closeOverlay() {
-    setIsOpen(false);
-    document.body.classList.remove("overflow-hidden");
-  }
+  const { isOpen, overPath, openOverlay, closeOverlay } = useHome();
 
   return (
     <div>

@@ -1,29 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./Navbar.css";
 import Logo from "../../images/webp/product-designer-logo.webp";
 import "bootstrap/dist/css/bootstrap.min.css";
 import * as ReactBootStrap from "react-bootstrap";
-import { Link, useLocation } from "react-router-dom";
-import { auth } from "../../Firebase";
+import { Link } from "react-router-dom";
+import useNavbar from "./useNavbar";
 
 const Navbar = () => {
-  let location = useLocation();
-
-  const [user, setUser] = useState();
-
-  // AUTH
-
-  useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      setUser(user);
-    });
-  });
-
-  const handleAuthentication = () => {
-    if (user && window.confirm("Are you sure you want to log out?")) {
-      auth.signOut();
-    }
-  };
+  const { user, handleAuthentication, location } = useNavbar();
 
   return (
     <div>

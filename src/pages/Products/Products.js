@@ -18,7 +18,7 @@ import Mousepad from "../../images/general/Mousepad.webp";
 const Products = () => {
   useEffect(() => {
     document.body.style.overflow = "auto";
-  });
+  }, []);
 
   return (
     <div className="container">

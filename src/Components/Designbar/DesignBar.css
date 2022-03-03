@@ -245,17 +245,12 @@ input[type="color"]::-webkit-color-swatch {
 /* Switching canvas */
 
 .canvas-container {
-  display: block;
   width: 600px;
   margin: auto;
 }
 
 .canvas-hidden {
   display: none;
-}
-
-.canvas-active {
-  display: block;
 }
 
 /* SAVE FORM OVERLAY */
@@ -407,11 +402,15 @@ input[type="color"]::-webkit-color-swatch {
   }
 
   .color-container-responsive {
-    display: block;
-    position: absolute;
+    position: relative;
+    background-color: #201c2c;
     top: 15px;
     width: 100%;
-    left: 130px;
+    margin: unset;
+  }
+
+  .color-container-responsive.expandable-container-active {
+    display: flex;
   }
 
   .bar-container {
@@ -458,7 +457,7 @@ input[type="color"]::-webkit-color-swatch {
 
   /* Save */
 
-  #save-container-responsive {
+  .save-container-responsive {
     position: absolute;
     width: 250px;
     bottom: 98px;
@@ -485,8 +484,5 @@ input[type="color"]::-webkit-color-swatch {
     background-color: rgba(32, 28, 44, 0.92);
     backdrop-filter: blur(4px);
     z-index: 5;
-  }
-
-  .button.add {
   }
 }

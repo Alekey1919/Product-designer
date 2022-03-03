@@ -1,5 +1,5 @@
 import React from "react";
-import DesignBar from "./DesignBar";
+import DesignBar from "../../Components/Designbar/Designbar";
 import { fabric } from "fabric";
 import { useState, useEffect } from "react";
 import "./DesignProducts.css";
@@ -22,21 +22,14 @@ function DesignCushion() {
         setUser(user);
       }
     });
-  });
+  }, []);
 
   const [canvas, setCanvas] = useState("");
   const [screenWidth, setScreenWidth] = useState(window.screen.width);
+  const [isTextOpened, setIsTextOpened] = useState(false);
+  const [isAddImageOpened, setIsAddImageOpened] = useState(false);
   const canvasContainer = document.querySelector("#canvas-container");
   const history = useHistory();
-
-  useEffect(() => {
-    document.getElementById("front-back").style.display = "none";
-    document.getElementById("yellow-color").style.display = "none";
-    document.getElementById("blue-color").style.display = "none";
-    document.getElementById("red-color").style.display = "none";
-    document.querySelector(".front-btn-responsive").style.display = "none";
-    document.querySelector(".back-btn-responsive").style.display = "none";
-  });
 
   // Resize listener
 
@@ -51,14 +44,6 @@ function DesignCushion() {
           });
           canvas.backgroundImage.scaleToWidth(462);
           canvas.renderAll();
-
-          if (
-            document.querySelector("#color-container").classList.length <= 2
-          ) {
-            document
-              .querySelector("#color-container")
-              .classList.remove("color-container-active");
-          }
         }
       }
     } else {
@@ -69,37 +54,6 @@ function DesignCushion() {
         });
         canvas.backgroundImage.scaleToWidth(600);
         canvas.renderAll();
-
-        document
-          .querySelector("#color-container")
-          .classList.remove("color-container-responsive");
-        document
-          .querySelector(".btn-choose-color")
-          .classList.remove("btn-choose-color-responsive");
-        document
-          .querySelector(".btn-add-text")
-          .classList.remove("display-none");
-        document
-          .querySelector(".btn-add-image")
-          .classList.remove("display-none");
-        document
-          .querySelector(".front-btn-responsive")
-          .classList.remove("display-none");
-        document
-          .querySelector(".back-btn-responsive")
-          .classList.remove("display-none");
-        document
-          .querySelector(".save-btn-container")
-          .classList.remove("display-none");
-        document
-          .getElementById("upload-image-container-responsive")
-          .classList.remove("expandable-container-active");
-        document
-          .getElementById("save-container-responsive")
-          .classList.remove("expandable-container-active");
-        document
-          .getElementById("add-text-container-responsive")
-          .classList.remove("expandable-container-active");
       }
     }
     setScreenWidth(window.screen.width);
@@ -146,10 +100,9 @@ function DesignCushion() {
       canvas.setBackgroundImage(WhiteCushion);
     }
     setTimeout(() => {
-      //If it's immediate it doesn't work
       canvas.backgroundImage.scaleToWidth(canvas.width);
       canvas.renderAll();
-    }, 100);
+    }, 10);
   };
 
   // Delete Function
@@ -172,40 +125,12 @@ function DesignCushion() {
   // Sidebar functions
 
   const openAddImage = () => {
-    if (window.screen.width > 999) {
-      document
-        .querySelector("#upload-image-container")
-        .classList.toggle("expandable-container-active");
-    } else {
-      document
-        .querySelector("#upload-image-container-responsive")
-        .classList.toggle("expandable-container-active");
-      document
-        .getElementById("add-text-container-responsive")
-        .classList.remove("expandable-container-active");
-      document
-        .getElementById("save-container-responsive")
-        .classList.remove("expandable-container-active");
-    }
+    setIsAddImageOpened((curr) => !curr);
     deleteHandler();
   };
 
   const openAddText = () => {
-    if (window.screen.width > 999) {
-      document
-        .querySelector("#add-text-container")
-        .classList.toggle("expandable-container-active");
-    } else {
-      document
-        .querySelector("#add-text-container-responsive")
-        .classList.toggle("expandable-container-active");
-      document
-        .getElementById("upload-image-container-responsive")
-        .classList.remove("expandable-container-active");
-      document
-        .getElementById("save-container-responsive")
-        .classList.remove("expandable-container-active");
-    }
+    setIsTextOpened((curr) => !curr);
     deleteHandler();
   };
 
@@ -438,7 +363,9 @@ function DesignCushion() {
 
     // Font
 
-    let fontFamily = document.querySelector("#font");
+    let fontFamily = document.querySelector(
+      window.screen.width > 999 ? "#font" : "#font-responsive"
+    );
     fontFamily.addEventListener("change", () => {
       if (canvas.getActiveObject() != null) {
         canvas.getActiveObject().set("fontFamily", fontFamily.value);
@@ -448,7 +375,9 @@ function DesignCushion() {
 
     // Font-size
 
-    let fontSize = document.querySelector("#font-size");
+    let fontSize = document.querySelector(
+      window.screen.width > 999 ? "#font-size" : "#font-size-responsive"
+    );
     fontSize.addEventListener("change", () => {
       if (canvas.getActiveObject() != null) {
         canvas.getActiveObject().set("fontSize", fontSize.value);
@@ -508,7 +437,9 @@ function DesignCushion() {
 
     // Color picker onchange
 
-    document.getElementById("color-picker").onchange = function () {
+    document.getElementById(
+      window.screen.width > 999 ? "color-picker" : "color-picker-responsive"
+    ).onchange = function () {
       if (canvas.getActiveObject() != null) {
         canvas.getActiveObject().set("fill", this.value);
         canvas.renderAll();
@@ -595,6 +526,9 @@ function DesignCushion() {
   return (
     <div className="component-container">
       <DesignBar
+        isTextOpened={isTextOpened}
+        isAddImageOpened={isAddImageOpened}
+        isFrontCanvas={true}
         uploadImage={uploadImage}
         openAddText={openAddText}
         addText={addText}
@@ -603,6 +537,8 @@ function DesignCushion() {
         submitHandler={submitHandler}
         inputfileHandler={inputfileHandler}
         colorPicker={colorPicker}
+        hasTwoCanvases={false}
+        colorVariants={2}
       />
     </div>
   );

@@ -1,76 +1,22 @@
-import React, { useState } from "react";
-import { useHistory, Link } from "react-router-dom";
-import { auth } from "../../Firebase";
+import React from "react";
+import { Link } from "react-router-dom";
+import useLogin from "./useLogin";
+
 import "./Login.css";
 import Logo from "../../images/webp/product-designer-logo-black.webp";
 
 function Login() {
-  const history = useHistory();
-  const [values, setValues] = useState({
-    email: "guest@guest.com",
-    password: "123guest",
-  });
-  const [recovery, setRecovery] = useState(false);
-
-  const singIn = (e) => {
-    e.preventDefault();
-    auth
-      .signInWithEmailAndPassword(values.email, values.password)
-      .then((auth) => {
-        history.goBack();
-      })
-      .catch((err) => {
-        alert(err.message);
-      });
-  };
-
-  const handleEmailInput = (e) => {
-    setValues({
-      ...values,
-      email: e.target.value,
-    });
-  };
-
-  const handlePasswordInput = (e) => {
-    setValues({
-      ...values,
-      password: e.target.value,
-    });
-  };
-
-  const register = (e) => {
-    e.preventDefault();
-
-    auth
-      .createUserWithEmailAndPassword(values.email, values.password)
-      // It successfully created a new user with email and password
-      .then((auth) => {
-        if (auth) {
-          history.push("/");
-        }
-      })
-      .catch((err) => {
-        alert(err.message);
-      });
-  };
-
-  const openChangePassword = () => {
-    setRecovery(true);
-  };
-
-  const changePassword = (e) => {
-    e.preventDefault();
-    let email = document.querySelector("#email").value;
-    console.log(email);
-    auth
-      .sendPasswordResetEmail(email)
-      .then(() => alert("Recovery mail sent"))
-      .catch((err) => alert(err.message));
-  };
-
-  const closeChangePassword = () => {
-    setRecovery(false);
-  };
+  const {
+    values,
+    recovery,
+    singIn,
+    handleEmailInput,
+    handlePasswordInput,
+    register,
+    openChangePassword,
+    closeChangePassword,
+    changePassword,
+  } = useLogin();
 
   if (recovery) {
     return (
