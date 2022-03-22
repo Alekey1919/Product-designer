@@ -1,3 +1,9 @@
+![Preview](./src/images/general/Preview.webp)
+
+### A site where you can design and save your own products by changing colors as well as adding text and images ✏📐
+
+[Visit site](https://alekey1919.github.io/Product-designer/design#/)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
